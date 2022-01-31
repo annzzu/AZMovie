@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.AppSplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/reply_blue_700</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_film</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.AZMovie</item>
+
+        <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
+        <item name="android:navigationBarColor">@color/white</item>
+    </style>
+</resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigationSearchMovie">
+
+    <fragment
+        android:id="@+id/navigationMain"
+        android:name="az.movie.az_movie.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_navigationIntro"
+            app:destination="@id/navigationIntro" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigationIntro"
+        android:name="az.movie.az_movie.ui.fragment.intro.IntroSlideFragment"
+        android:label="IntroSlideFragment"
+        tools:layout="@layout/fragment_intro_slide" >
+        <action
+            android:id="@+id/action_navigationIntro_to_mainFragment"
+            app:destination="@id/navigationMain" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigationSearchMovie"
+        android:name="az.movie.az_movie.SearchMovieFragment"
+        android:label="fragment_search_movie"
+        tools:layout="@layout/fragment_search_movie" />
+
+    <fragment
+        android:id="@+id/navigationNetwork"
+        android:name="az.movie.az_movie.ui.fragment.network.NetworkFragment"
+        android:label="NetworkFragment"
+        tools:layout="@layout/fragment_network" />
+
+</navigation>
