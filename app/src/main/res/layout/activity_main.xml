@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.MainActivity">
+    tools:context=".ui.MainActivity">
 
     <fragment
         android:id="@+id/navHostFragment"
@@ -19,7 +19,7 @@
         app:navGraph="@navigation/nav_graph"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnFab"
+        android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/reply_blue_700"
@@ -28,20 +28,8 @@
         android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_film"
-        app:tint="@color/white" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/reply_blue_700"
-        android:contentDescription="@string/app_name"
-        android:foregroundTint="@color/white"
-        android:layout_margin="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/ic_back"
-        app:tint="@color/white" />
+        app:tint="@color/white"
+        android:visibility="invisible"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,9 +7,14 @@ import az.movie.az_movie.data.remote.datasources.trailer.TrailerDataSource
 import az.movie.az_movie.databinding.ItemTrailerLayoutBinding
 import az.movie.az_movie.extensions.setImageUrl
 import az.movie.az_movie.model.trailerDataModel.Trailer
+import az.movie.az_movie.ui.base.ClickCallBack
 
-//
-class TrailerAdapter(private var trailerSlides: MutableList<Trailer>) : RecyclerView.Adapter<TrailerAdapter.ViewHolder>() {
+typealias ClickIntCallBack = (int: Int) -> Unit
+class TrailerAdapter() : RecyclerView.Adapter<TrailerAdapter.ViewHolder>() {
+
+    private var trailerSlides = mutableListOf<Trailer>()
+
+    var clickIntCallBack: ClickIntCallBack? = null
 
     override fun onCreateViewHolder(parent: ViewGroup , viewType: Int) =
         ViewHolder(
@@ -29,7 +34,14 @@ class TrailerAdapter(private var trailerSlides: MutableList<Trailer>) : Recycler
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(model: Trailer) = with(binding) {
             tvTitle.text = model.secondaryName ?: model.primaryName ?: model.originalName
-            icon.setImageUrl(model.posters?.data?.size240)
+            icon.setImageUrl(
+                model.covers?.data?.size1920 ?: model.covers?.data?.size1050
+                ?: model.posters?.data?.size240
+            )
+            root.setOnClickListener {
+                clickIntCallBack?.invoke(model.id)
+            }
+
         }
     }
 

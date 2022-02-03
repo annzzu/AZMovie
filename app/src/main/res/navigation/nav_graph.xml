@@ -9,17 +9,21 @@
         android:id="@+id/navigationMain"
         android:name="az.movie.az_movie.ui.fragment.main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_navigationIntro"
             app:destination="@id/navigationIntro" />
+        <action
+            android:id="@+id/action_navigationMain_to_navigationMovie"
+            app:destination="@id/navigationMovie" />
+
     </fragment>
 
     <fragment
         android:id="@+id/navigationIntro"
         android:name="az.movie.az_movie.ui.fragment.intro.IntroSlideFragment"
         android:label="IntroSlideFragment"
-        tools:layout="@layout/fragment_intro_slide" >
+        tools:layout="@layout/fragment_intro_slide">
         <action
             android:id="@+id/action_navigationIntro_to_mainFragment"
             app:destination="@id/navigationMain" />
@@ -41,21 +45,31 @@
         android:id="@+id/navigationMovies"
         android:name="az.movie.az_movie.ui.fragment.movies.MoviesFragment"
         android:label="fragment_movies"
-        tools:layout="@layout/fragment_movies" >
+        tools:layout="@layout/fragment_movies">
         <action
             android:id="@+id/action_navigationMovies_to_navigationMoviesFullData"
             app:destination="@id/navigationMoviesFullData" />
     </fragment>
 
     <fragment
+        android:id="@+id/navigationMovie"
+        android:name="az.movie.az_movie.ui.fragment.movie.MovieFragment"
+        android:label="fragment_movie"
+        tools:layout="@layout/fragment_movie" >
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
         android:id="@+id/navigationMoviesFullData"
         android:name="az.movie.az_movie.MoviesFullDataFragment"
         android:label="fragment_movies_full_data"
-        tools:layout="@layout/fragment_movies_full_data" >
+        tools:layout="@layout/fragment_movies_full_data">
         <argument
             android:name="series"
-            app:argType="boolean"
-            android:defaultValue="false" />
+            android:defaultValue="false"
+            app:argType="boolean" />
     </fragment>
 
 </navigation>

@@ -25,14 +25,10 @@ class TrailerViewModel @Inject constructor(private val repository: TrailerReposi
     private val _trailers = MutableSharedFlow<Resource<TrailerData>>()
     val trailers: SharedFlow<Resource<TrailerData>> = _trailers
 
-    private suspend fun getTrailersData() = viewModelScope.launch {
+    suspend fun getTrailersData() = viewModelScope.launch {
         repository.getTrailersData().collectLatest { values ->
             _trailers.emit(values)
         }
     }
-    init {
-        viewModelScope.launch {
-            getTrailersData()
-        }
-    }
+
 }

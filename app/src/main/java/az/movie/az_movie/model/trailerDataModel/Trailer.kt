@@ -6,12 +6,13 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class Trailer(
-    val id: String ,
+    val id: Int ,
     val adjaraId: Int?  = null ,
     val primaryName: String?  = null ,
     val secondaryName: String?  = null ,
     val originalName: String?  = null ,
     val posters: Posters? = null ,
     val trailers: Trailers? = null ,
+    val covers: Covers? = null ,
 )
 

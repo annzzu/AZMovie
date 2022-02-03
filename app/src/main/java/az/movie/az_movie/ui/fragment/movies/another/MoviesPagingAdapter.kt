@@ -35,7 +35,6 @@ class MoviesPagingAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(model: Movie) {
             binding.tvTitle.text = model.secondaryName ?: model.primaryName ?: model.originalName
-            binding.tvPublishDate.text = model.year.toString()
             binding.imCover.setImageUrl(model.posters!!.data!!.size240)
             binding.root.setOnClickListener {
                 clickMovieCallBack?.invoke(model.id!!)

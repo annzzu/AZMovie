@@ -1,7 +1,9 @@
-package az.movie.az_movie.ui.activity
+package az.movie.az_movie.ui
 
 import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.os.Bundle
+import android.util.Log.d
 import android.view.View
 import android.view.animation.AnticipateInterpolator
 import androidx.activity.viewModels
@@ -9,10 +11,7 @@ import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.ActivityNavigator
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
-import androidx.navigation.findNavController
+import androidx.navigation.*
 import az.movie.az_movie.databinding.ActivityMainBinding
 import az.movie.az_movie.extensions.*
 import az.movie.az_movie.ui.base.BaseActivity
@@ -33,21 +32,27 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
     private lateinit var binding: ActivityMainBinding
     private val navController by lazy { findNavController(IDS.navHostFragment) }
 
+    private val currentNavigationFragment: Fragment?
+        get() = supportFragmentManager.findFragmentById(IDS.navHostFragment)
+            ?.childFragmentManager
+            ?.fragments
+            ?.first()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initSplashScreen()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initMain()
-
     }
 
     @ExperimentalCoroutinesApi
     private fun initMain() {
         initIntro()
-        initFab()
+        initBTN()
         initNetwork()
     }
+
 
     @ExperimentalCoroutinesApi
     private fun initNetwork() {
@@ -57,7 +62,7 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
                     navigationWithMotion(IDS.navigationNetwork)
                 } else {
                     if (currentNavigationFragment is NetworkFragment) {
-                        binding.btnFab.visible()
+                        binding.btnBack.visible()
                         supportFragmentManager.popBackStackImmediate()
                     }
                 }
@@ -86,7 +91,6 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
                 duration = 600L
                 start()
             }
-
             val splashScreenAnimator = ObjectAnimator.ofFloat(
                 splashScreenView.view ,
                 View.TRANSLATION_Y ,
@@ -102,13 +106,8 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
         }
     }
 
-    private val currentNavigationFragment: Fragment?
-        get() = supportFragmentManager.findFragmentById(IDS.navHostFragment)
-            ?.childFragmentManager
-            ?.fragments
-            ?.first()
 
-    private fun initFab() {
+    private fun initBTN() {
         binding.run {
             navController.addOnDestinationChangedListener(
                 this@MainActivity
@@ -122,8 +121,21 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
         arguments: Bundle?
     ) {
         when (destination.id) {
-            IDS.navigationNetwork, IDS.navigationIntro -> binding.btnFab.invisible()
-            else -> binding.btnFab.visible()
+            IDS.navigationMovie , IDS.navigationSearchMovie -> goBack()
+            else -> {
+                d("testing az" , " $destination")
+                binding.btnBack.invisible()
+            }
+        }
+    }
+
+    private fun goBack() {
+        binding.btnBack.apply {
+            visible()
+            setOnClickListener {
+                navController.popBackStack(IDS.navigationMain, false)
+                binding.btnBack.invisible()
+            }
         }
     }
 

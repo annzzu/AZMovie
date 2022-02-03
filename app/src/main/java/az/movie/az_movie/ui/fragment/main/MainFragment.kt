@@ -12,6 +12,7 @@ import az.movie.az_movie.extensions.DRAWABLES
 import az.movie.az_movie.extensions.STRINGS
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import az.movie.az_movie.extensions.invisible
 import az.movie.az_movie.extensions.visible
 import az.movie.az_movie.model.trailerDataModel.Trailer
@@ -31,7 +32,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
 
     private lateinit var filmTabAdapter: FilmTabAdapter
     private val trailerViewModel: TrailerViewModel by viewModels()
-//    private lateinit var trailerAdapter: TrailerAdapter
+    private lateinit var trailerAdapter: TrailerAdapter
 
     override fun setInfo() {
         initTrailerSlider()
@@ -61,12 +62,14 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
     }
 
     private fun initTrailerSlider() {
-//        initTrailerObservers()
         initTrailerVP()
-
+        initTrailerObservers()
     }
 
     private fun initTrailerObservers() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            trailerViewModel.getTrailersData()
+        }
         viewLifecycleOwner.lifecycleScope.launch {
             trailerViewModel.trailers.collectLatest { trailers ->
                 with(binding) {
@@ -81,9 +84,11 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                             pbTrailer.visible()
                         }
                         is Resource.Success -> {
-                            tvError.invisible()
+                            pbTrailer.invisible()
                             trailers.data?.data?.let { value ->
                                 trailerAdapter.setData(value)
+                                setupIndicators()
+                                setCurrentIndicator(0)
                                 tvError.invisible()
                             } ?: run {
                                 tvError.visible()
@@ -98,6 +103,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
 
     private fun initTrailerVP() {
         binding.vpTrailer.apply {
+            trailerAdapter = TrailerAdapter()
             adapter = trailerAdapter
             registerOnPageChangeCallback(object :
                 ViewPager2.OnPageChangeCallback() {
@@ -106,15 +112,17 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                     setCurrentIndicator(position)
                 }
             })
-
             setPageTransformer(ZoomOutPageTransformer())
         }
         setupIndicators()
         setCurrentIndicator(0)
+        trailerAdapter.clickIntCallBack = {
+            openMovie(it)
+        }
     }
 
     private fun setupIndicators() {
-        val indicators = arrayOfNulls<ImageView>(IntroSlideFragment.introSliderAdapter.itemCount)
+        val indicators = arrayOfNulls<ImageView>(trailerAdapter.itemCount)
         val layoutParams: LinearLayout.LayoutParams =
             LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT ,
@@ -134,7 +142,6 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                 )
                 this?.layoutParams = layoutParams
             }
-
             binding.lIndicatorContainer.addView(indicators[i])
         }
     }
@@ -161,21 +168,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
         }
     }
 
-    companion object {
-        val trailerAdapter = TrailerAdapter(
-            mutableListOf(
-                Trailer(
-                    id = "1",
-                    secondaryName = "oooo" ,
-                ) ,
-                Trailer(
-                    id = "2",
-                    secondaryName = "For Your Fun" ,
-                ) ,
-                Trailer(
-                    id = "3",
-                    secondaryName ="For Your Fun" ,
-                )
+    private fun openMovie(movieId: Int) {
+        findNavController().navigate(
+            MainFragmentDirections.actionNavigationMainToNavigationMovie(
+                movieId
             )
         )
     }

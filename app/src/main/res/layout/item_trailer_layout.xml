@@ -8,8 +8,8 @@
         android:id="@+id/icon"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@drawable/ic_launcher_foreground"
-        app:tint="@color/white" />
+        android:scaleType="center"
+        app:srcCompat="@drawable/ic_launcher_foreground"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTitle"
@@ -20,7 +20,7 @@
         android:lines="2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias=".95"
+        app:layout_constraintVertical_bias=".85"
         android:textColor="@color/reply_blue_800"
         app:layout_constraintWidth_percent=".6"
         android:textSize="18sp"

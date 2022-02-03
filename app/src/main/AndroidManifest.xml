@@ -16,7 +16,7 @@
         android:theme="@style/Theme.AppSplash"
         tools:targetApi="m">
         <activity
-            android:name="az.movie.az_movie.ui.activity.MainActivity"
+            android:name="az.movie.az_movie.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
