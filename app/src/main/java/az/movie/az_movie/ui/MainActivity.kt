@@ -123,7 +123,6 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
         when (destination.id) {
             IDS.navigationMovie , IDS.navigationSearchMovie -> goBack()
             else -> {
-                d("testing az" , " $destination")
                 binding.btnBack.invisible()
             }
         }

@@ -50,6 +50,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
             adapter = filmTabAdapter
             setPageTransformer(ZoomOutPageTransformer())
         }
+        filmTabAdapter.clickIntCallBack = {
+            openMovie(it)
+        }
     }
 
     private fun initTab() {
