@@ -4,7 +4,7 @@
     <style name="Theme.AppSplash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/reply_blue_700</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_logo_splash</item>
-        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="windowSplashScreenAnimationDuration">@integer/integer_1000</item>
         <item name="postSplashScreenTheme">@style/Theme.AZMovie</item>
 
         <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>

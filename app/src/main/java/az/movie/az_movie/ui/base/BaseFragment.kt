@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import az.movie.az_movie.extensions.INTEGERS
 import com.google.android.material.transition.MaterialElevationScale
+import dagger.hilt.android.AndroidEntryPoint
 
-typealias  Inflate<T> = (LayoutInflater , ViewGroup , Boolean) -> T
+typealias  Inflate<T> = (LayoutInflater , ViewGroup? , Boolean) -> T
 
 abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) : Fragment() {
 
@@ -22,14 +23,15 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
         super.onCreate(savedInstanceState)
         initOnCreate()
     }
-    open fun initOnCreate(){}
+
+    open fun initOnCreate() {}
 
     override fun onCreateView(
         inflater: LayoutInflater ,
         container: ViewGroup? ,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = inflate.invoke(inflater , container!! , false)
+        _binding = inflate.invoke(inflater , container , false)
         return _binding!!.root
     }
 
@@ -48,7 +50,17 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
         }
     }
 
-    open fun init() {}
+    open fun init() {
+        setInfo()
+        listener()
+        observer()
+    }
+
+    open fun setInfo() {}
+
+    open fun listener() {}
+
+    open fun observer() {}
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -109,23 +109,25 @@ class IntroSlideFragment : BaseFragment<FragmentIntroSlideBinding>(
         }
     }
 
-    private val introSliderAdapter = IntroSliderAdapter(
-        listOf(
-            IntroSlide(
-                "AZ\nMovie" ,
-                "For Your Fun" ,
-                DRAWABLES.ic_camera
-            ) ,
-            IntroSlide(
-                "AZ\nMovie" ,
-                "For Your Fun" ,
-                DRAWABLES.ic_film
-            ) ,
-            IntroSlide(
-                "AZ\nMovie" ,
-                "For Your Fun" ,
-                DRAWABLES.ic_popcorn
+    companion object {
+        val introSliderAdapter = IntroSliderAdapter(
+            listOf(
+                IntroSlide(
+                    "AZ\nMovie" ,
+                    "For Your Fun" ,
+                    DRAWABLES.ic_camera
+                ) ,
+                IntroSlide(
+                    "AZ\nMovie" ,
+                    "For Your Fun" ,
+                    DRAWABLES.ic_film
+                ) ,
+                IntroSlide(
+                    "AZ\nMovie" ,
+                    "For Your Fun" ,
+                    DRAWABLES.ic_popcorn
+                )
             )
         )
-    )
+    }
 }

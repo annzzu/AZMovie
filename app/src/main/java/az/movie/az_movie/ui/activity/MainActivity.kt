@@ -57,7 +57,7 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
                     navigationWithMotion(IDS.navigationNetwork)
                 } else {
                     if (currentNavigationFragment is NetworkFragment) {
-                        binding.fab.visible()
+                        binding.btnFab.visible()
                         supportFragmentManager.popBackStackImmediate()
                     }
                 }
@@ -122,15 +122,15 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
         arguments: Bundle?
     ) {
         when (destination.id) {
-            IDS.navigationNetwork, IDS.navigationIntro -> binding.fab.invisible()
-            else -> binding.fab.visible()
+            IDS.navigationNetwork, IDS.navigationIntro -> binding.btnFab.invisible()
+            else -> binding.btnFab.visible()
         }
     }
 
     override fun onBackPressed() {
         if (currentNavigationFragment is NetworkFragment) {
             MaterialAlertDialogBuilder(this)
-                .setMessage("No Way Home")
+                .setMessage(getString(STRINGS.check_network))
                 .setPositiveButton(getString(STRINGS.ok)) { _ , _ ->
                     binding.root.showSnackBar(getString(STRINGS.ok))
                 }

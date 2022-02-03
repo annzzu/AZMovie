@@ -12,11 +12,9 @@ import androidx.viewbinding.ViewBinding
 import az.movie.az_movie.extensions.INTEGERS
 import com.google.android.material.transition.MaterialFadeThrough
 
-typealias  DialogInflate<T> = (LayoutInflater , ViewGroup? , Boolean) -> T
-
 typealias ClickCallBack = (string: String) -> Unit
 
-abstract class BaseFragmentDialog<VB : ViewBinding>(private val inflate: DialogInflate<VB>) :
+abstract class BaseFragmentDialog<VB : ViewBinding>(private val inflate: Inflate<VB>) :
     DialogFragment() {
 
     var clickCallBack: ClickCallBack? = null
