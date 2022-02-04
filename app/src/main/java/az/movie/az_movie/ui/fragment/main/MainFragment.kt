@@ -37,6 +37,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
     override fun setInfo() {
         initTrailerSlider()
         initTabVP()
+        binding.btnSearch.apply{
+//            animate().alpha(1f).translationYBy(-50).duration = 1500
+        }
     }
 
     private fun initTabVP() {

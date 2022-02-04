@@ -3,13 +3,11 @@ package az.movie.az_movie.ui.fragment.movie
 import android.util.Log.d
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import az.movie.az_movie.databinding.FragmentMovieBinding
-import az.movie.az_movie.extensions.STRINGS
-import az.movie.az_movie.extensions.invisible
-import az.movie.az_movie.extensions.setImageUrl
-import az.movie.az_movie.extensions.visible
+import az.movie.az_movie.extensions.*
 import az.movie.az_movie.model.moviesDataModel.Movie
 import az.movie.az_movie.model.moviesDataModel.Plots
 import az.movie.az_movie.ui.base.BaseFragment
@@ -33,6 +31,7 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::i
             adapter = genreAdapter
             layoutManager =
                 LinearLayoutManager(view?.context , LinearLayoutManager.HORIZONTAL , false)
+            startLayoutAnimation()
         }
     }
 
@@ -71,15 +70,9 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::i
 
 
     private fun setMovie(movie: Movie) = with(binding) {
-        ivCover.setImageUrl(
-            movie.covers?.data?.size1920 ?: movie.covers?.data?.size1050
-            ?: movie.posters?.data?.size240
-        )
-        ivPoster.setImageUrl(
-            movie.posters?.data?.size240 ?: movie.covers?.data?.size1920
-            ?: movie.covers?.data?.size1050
-        )
-        tvTitle.text = movie.secondaryName ?: movie.primaryName ?: movie.originalName
+        ivCover.setImageUrl(movie.coverR)
+        ivPoster.setImageUrl(movie.poster)
+        tvTitle.text = movie.title
         ivPoster.clipToOutline = true
         movie.genres?.data?.let {
             genreAdapter.submitList(movie.genres.data)
@@ -112,6 +105,23 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::i
                 }
             }
         }
+
+        binding.btnStart.apply {
+            if (movie.isMovie != null && movie.isMovie == true) {
+                visible()
+                setOnClickListener {
+                    openBottomSheet(movie.id , movie.title)
+                }
+            }
+        }
+    }
+
+    private fun openBottomSheet(movieId: Int , title: String) {
+        findNavController().navigate(
+            MovieFragmentDirections.actionNavigationMovieToMovieBottomSheet(
+                movieId , title
+            )
+        )
     }
 
     private fun filterPlots(plots: List<Plots.Data> , lang: LangType) =

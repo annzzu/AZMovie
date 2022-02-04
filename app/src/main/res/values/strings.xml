@@ -31,4 +31,6 @@
     <string name="rus">RUS</string>
     <string name="start">Start</string>
     <string name="description">Description</string>
+    <string name="play">Play</string>
+    <string name="movie">Movie</string>
 </resources>

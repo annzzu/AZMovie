@@ -57,10 +57,13 @@
         android:id="@+id/navigationMovie"
         android:name="az.movie.az_movie.ui.fragment.movie.MovieFragment"
         android:label="fragment_movie"
-        tools:layout="@layout/fragment_movie" >
+        tools:layout="@layout/fragment_movie">
         <argument
             android:name="movieId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_navigationMovie_to_movieBottomSheet"
+            app:destination="@id/movieBottomSheet" />
     </fragment>
 
     <fragment
@@ -72,6 +75,32 @@
             android:name="series"
             android:defaultValue="false"
             app:argType="boolean" />
+
+    </fragment>
+
+    <dialog
+        android:id="@+id/movieBottomSheet"
+        android:name="az.movie.az_movie.ui.fragment.movie.MovieBottomSheet"
+        android:label="fragment_movie_bottom_sheet"
+        tools:layout="@layout/fragment_movie_bottom_sheet">
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_movieBottomSheet_to_playerFragment"
+            app:destination="@id/playerFragment" />
+    </dialog>
+
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="az.movie.az_movie.ui.fragment.player.PlayerFragment"
+        android:label="PlayerFragment">
+        <argument
+            android:name="url"
+            app:argType="string" />
     </fragment>
 
 </navigation>

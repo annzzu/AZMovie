@@ -45,6 +45,7 @@ class MoviesFullDataFragment : BaseFragment<FragmentMoviesFullDataBinding>(Fragm
             )
             layoutManager =
                 LinearLayoutManager(view?.context , LinearLayoutManager.HORIZONTAL , false)
+            startLayoutAnimation()
         }
     }
 

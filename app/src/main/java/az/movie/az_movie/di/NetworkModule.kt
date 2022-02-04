@@ -2,6 +2,7 @@ package az.movie.az_movie.di
 
 import az.movie.az_movie.BuildConfig
 import az.movie.az_movie.data.remote.services.movie.MovieApiService
+import az.movie.az_movie.data.remote.services.player.PlayerApiService
 import az.movie.az_movie.data.remote.services.trailers.TrailersApiService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -70,10 +71,17 @@ object NetworkModule {
     fun movieService(retrofit: Retrofit): MovieApiService {
         return retrofit.create(MovieApiService::class.java)
     }
+
     @Singleton
     @Provides
     fun trailerService(retrofit: Retrofit): TrailersApiService {
         return retrofit.create(TrailersApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun playerService(retrofit: Retrofit): PlayerApiService {
+        return retrofit.create(PlayerApiService::class.java)
     }
 
 }

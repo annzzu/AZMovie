@@ -11,11 +11,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
-class MovieRepositoryImpl @Inject constructor(private val dataSource: MovieDataSource) {
+class MovieRepositoryImpl @Inject constructor(private val dataSource: MovieDataSource) :
+    MovieRepository {
 
-    private val searchResults = MutableSharedFlow<Resource<MovieData>>(replay = 1)
+    override val searchResults = MutableSharedFlow<Resource<MovieData>>(replay = 1)
 
-    suspend fun getMovies(page: Int , isMovie: Boolean): Resource<MovieData> {
+    override suspend fun getMovies(page: Int , isMovie: Boolean): Resource<MovieData> {
         Log.d("GithubRepository" , "New query: $page")
         requestAndSaveData(page , isMovie)
         return if (isMovie)
@@ -24,7 +25,7 @@ class MovieRepositoryImpl @Inject constructor(private val dataSource: MovieDataS
             handleResponse { dataSource.getMoviesData(page , MovieType.SERIES) }
     }
 
-    private suspend fun requestAndSaveData(page: Int , isMovie: Boolean) {
+    override suspend fun requestAndSaveData(page: Int , isMovie: Boolean) {
         val response = if (isMovie)
             handleResponse { dataSource.getMoviesData(page , MovieType.MOVIE) }
         else
@@ -32,7 +33,7 @@ class MovieRepositoryImpl @Inject constructor(private val dataSource: MovieDataS
         searchResults.emit(response)
     }
 
-    fun getMoviesTopData(isMovie: Boolean): Flow<Resource<MovieData>> {
+    override fun getMoviesTopData(isMovie: Boolean): Flow<Resource<MovieData>> {
         return flow {
             emit(Resource.Loading())
             val result = if (isMovie)
@@ -43,7 +44,7 @@ class MovieRepositoryImpl @Inject constructor(private val dataSource: MovieDataS
         }.flowOn(Dispatchers.IO)
     }
 
-    fun getMovie(movieId: Int): Flow<Resource<ItemMovie>> {
+    override fun getMovie(movieId: Int): Flow<Resource<ItemMovie>> {
         return flow {
             emit(Resource.Loading())
             emit(handleResponse { dataSource.getMovie(movieId) })

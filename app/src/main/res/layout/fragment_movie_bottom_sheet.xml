@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_shapes_gr_bottom"
+        android:fontFamily="@font/font_regular"
+        android:padding="25sp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvMovie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/font_regular"
+        android:textAlignment="center"
+        android:textColor="@color/green_dd"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:text="@string/movie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btnGeo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:contentDescription="@string/app_name"
+        android:foregroundTint="@color/white"
+        android:text="@string/geo"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/green_d"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/btnEng"
+        app:layout_constraintHeight_percent=".25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMovie"
+        android:visibility="invisible"/>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btnEng"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:contentDescription="@string/app_name"
+        android:foregroundTint="@color/white"
+        android:text="@string/eng"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/green_d"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/btnRus"
+        app:layout_constraintHeight_percent=".25"
+        app:layout_constraintStart_toEndOf="@+id/btnGeo"
+        app:layout_constraintTop_toBottomOf="@+id/tvMovie"
+        android:visibility="invisible"/>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btnRus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:contentDescription="@string/app_name"
+        android:foregroundTint="@color/white"
+        android:text="@string/rus"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/green_d"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".25"
+        app:layout_constraintStart_toEndOf="@+id/btnEng"
+        app:layout_constraintTop_toBottomOf="@+id/tvMovie"
+        android:visibility="invisible"/>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btnPlay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:contentDescription="@string/app_name"
+        android:foregroundTint="@color/white"
+        android:text="@string/play"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/orange_l"
+        app:icon="@drawable/ic_play"
+        app:iconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEng" />
+
+
+    <!--<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    xmlns:tools="http://schemas.android.com/tools"-->
+    <!--    android:id="@+id/list"-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="match_parent"-->
+    <!--    android:clipToPadding="false"-->
+    <!--    android:paddingTop="@dimen/list_item_spacing_half"-->
+    <!--    android:paddingBottom="@dimen/list_item_spacing_half"-->
+    <!--    tools:context=".ui.fragment.movie.MovieBottomSheet"-->
+    <!--    tools:listitem="@layout/fragment_movie_bottom_sheet_list_dialog_item" />-->
+</androidx.constraintlayout.widget.ConstraintLayout>

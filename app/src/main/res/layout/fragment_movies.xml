@@ -25,6 +25,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         tools:listitem="@layout/item_movie"
+        android:layoutAnimation="@anim/item_rv_anim"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"

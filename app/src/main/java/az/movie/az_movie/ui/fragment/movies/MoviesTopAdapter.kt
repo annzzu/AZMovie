@@ -33,8 +33,8 @@ class MoviesTopAdapter : ListAdapter<Movie , MoviesTopAdapter.ViewHolder>(DiffCa
     inner class ViewHolder(private val binding: ItemMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(model: Movie) = with(binding) {
-            tvTitle.text = model.secondaryName ?: model.primaryName ?: model.originalName
-            imCover.setImageUrl(model.posters!!.data!!.size240)
+            tvTitle.text = model.title
+            imCover.setImageUrl(model.poster)
             root.setOnClickListener {
                 clickIntCallBack?.invoke(model.id)
             }

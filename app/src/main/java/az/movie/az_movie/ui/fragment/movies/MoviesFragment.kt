@@ -56,6 +56,7 @@ class MoviesFragment : BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding
             adapter = moviesTopAdapter
             layoutManager =
                 LinearLayoutManager(view?.context , LinearLayoutManager.HORIZONTAL , false)
+            startLayoutAnimation()
         }
         moviesTopAdapter.clickIntCallBack = {
             clickIntCallBack?.invoke(it)

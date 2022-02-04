@@ -110,4 +110,11 @@ dependencies {
     // paging
     implementation "androidx.paging:paging-runtime-ktx:3.1.0"
 
+    def exoplayer = "2.16.1"
+    implementation "com.google.android.exoplayer:exoplayer-core:$exoplayer"
+    implementation "com.google.android.exoplayer:exoplayer-dash:$exoplayer"
+    implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayer"
+    implementation "com.google.android.exoplayer:exoplayer-hls:$exoplayer"
+    implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayer"
+    implementation "com.google.android.exoplayer:exoplayer-smoothstreaming:$exoplayer"
 }

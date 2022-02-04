@@ -11,6 +11,5 @@ data class Posters(
     data class Data(
         @Json(name = "240")
         val size240: String?,
-        val blurhash: String?
     )
 }
