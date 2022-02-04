@@ -5,8 +5,8 @@ data class Genres(
     val data: List<Data>?
 ){
     data class Data(
-        val backgroundImage: String?,
         val id: Int?,
+        val backgroundImage: String?,
         val primaryName: String?,
         val secondaryName: String?,
         val tertiaryName: String?

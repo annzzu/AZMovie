@@ -15,7 +15,9 @@
             app:destination="@id/navigationIntro" />
         <action
             android:id="@+id/action_navigationMain_to_navigationMovie"
-            app:destination="@id/navigationMovie" />
+            app:destination="@id/navigationMovie"
+            app:popUpTo="@id/navigationMain"
+            app:popUpToInclusive="true" />
 
     </fragment>
 

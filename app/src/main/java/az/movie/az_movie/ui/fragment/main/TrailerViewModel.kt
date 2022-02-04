@@ -2,14 +2,8 @@ package az.movie.az_movie.ui.fragment.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.cachedIn
-import az.movie.az_movie.data.remote.datasources.trailer.TrailerDataSource
-import az.movie.az_movie.data.repository.movie.MovieRepositoryImpl
 import az.movie.az_movie.data.repository.trailer.TrailerRepositoryImpl
 import az.movie.az_movie.model.trailerDataModel.TrailerData
-import az.movie.az_movie.ui.fragment.movies.another.MoviesPagingSource
 import az.movie.az_movie.util.response_handler.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow

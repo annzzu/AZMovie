@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tvDescription"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="false"
+    android:enabled="false"
+    app:fontFamily="@font/font_regular"
+    android:fontFamily="@font/font_regular"
+    android:textSize="18sp"
+    android:textColor="@color/reply_blue_700"
+    android:layout_margin="10dp" />

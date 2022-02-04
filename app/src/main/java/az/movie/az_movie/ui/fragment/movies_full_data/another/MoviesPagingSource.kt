@@ -1,4 +1,4 @@
-package az.movie.az_movie.ui.fragment.movies.another
+package az.movie.az_movie.ui.fragment.movies_full_data.another
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

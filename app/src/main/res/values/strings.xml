@@ -16,6 +16,7 @@
     <string name="search">Search</string>
     <string name="categories">Categories</string>
 
+    <string name="movie_title">Movie Title</string>
     <string name="movies">Movies</string>
     <string name="series">Series</string>
 
@@ -23,4 +24,11 @@
     <string name="retry">retry</string>
     <string name="nothing_found">Nothing Found</string>
     <string name="error">Error</string>
+
+    <string name="imdb">IMDB</string>
+    <string name="geo">GEO</string>
+    <string name="eng">ENG</string>
+    <string name="rus">RUS</string>
+    <string name="start">Start</string>
+    <string name="description">Description</string>
 </resources>

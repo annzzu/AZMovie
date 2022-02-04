@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.button.MaterialButton xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tvTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clickable="false"
+    android:enabled="false"
+    android:fontFamily="@font/font_regular"
+    android:textSize="18sp"
+    android:backgroundTint="@color/red_d"
+    android:textColor="@color/white"
+    android:layout_marginEnd="5dp"
+    android:foregroundTint="@color/white"/>

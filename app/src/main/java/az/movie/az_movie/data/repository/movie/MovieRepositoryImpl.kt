@@ -1,6 +1,7 @@
 package az.movie.az_movie.data.repository.movie
 
 import android.util.Log
+import az.movie.az_movie.model.moviesDataModel.ItemMovie
 import az.movie.az_movie.data.remote.datasources.movie.MovieDataSource
 import az.movie.az_movie.model.moviesDataModel.MovieData
 import az.movie.az_movie.util.MovieType
@@ -8,8 +9,6 @@ import az.movie.az_movie.util.response_handler.Resource
 import az.movie.az_movie.util.response_handler.handleResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
-import retrofit2.HttpException
-import java.io.IOException
 import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(private val dataSource: MovieDataSource) {
@@ -33,9 +32,6 @@ class MovieRepositoryImpl @Inject constructor(private val dataSource: MovieDataS
         searchResults.emit(response)
     }
 
-
-
-
     fun getMoviesTopData(isMovie: Boolean): Flow<Resource<MovieData>> {
         return flow {
             emit(Resource.Loading())
@@ -44,6 +40,13 @@ class MovieRepositoryImpl @Inject constructor(private val dataSource: MovieDataS
             else
                 handleResponse { dataSource.getMoviesTopData(MovieType.SERIES) }
             emit(result)
+        }.flowOn(Dispatchers.IO)
+    }
+
+    fun getMovie(movieId: Int): Flow<Resource<ItemMovie>> {
+        return flow {
+            emit(Resource.Loading())
+            emit(handleResponse { dataSource.getMovie(movieId) })
         }.flowOn(Dispatchers.IO)
     }
 }

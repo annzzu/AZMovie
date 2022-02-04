@@ -132,7 +132,7 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
         binding.btnBack.apply {
             visible()
             setOnClickListener {
-                navController.popBackStack(IDS.navigationMain, false)
+                navigationWithMotion(IDS.navigationMain)
                 binding.btnBack.invisible()
             }
         }

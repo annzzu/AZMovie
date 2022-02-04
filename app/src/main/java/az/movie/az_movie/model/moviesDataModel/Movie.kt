@@ -21,7 +21,7 @@ data class Movie(
     val posters: Posters? ,
     val covers: Covers? ,
     val plot: Plot? ,
-//    val plots: Plots?,
+    val plots: Plots?,
     val genres: Genres? ,
     val trailers: Trailers? ,
     val countries: Countries? ,

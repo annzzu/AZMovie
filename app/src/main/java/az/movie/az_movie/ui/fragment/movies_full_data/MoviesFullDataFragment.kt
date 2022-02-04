@@ -9,8 +9,8 @@ import az.movie.az_movie.databinding.FragmentMoviesFullDataBinding
 import az.movie.az_movie.extensions.gone
 import az.movie.az_movie.ui.base.BaseFragment
 import az.movie.az_movie.ui.fragment.movies.MoviesViewModel
-import az.movie.az_movie.ui.fragment.movies.another.MoviesLoadingAdapter
-import az.movie.az_movie.ui.fragment.movies.another.MoviesPagingAdapter
+import az.movie.az_movie.ui.fragment.movies_full_data.another.MoviesLoadingAdapter
+import az.movie.az_movie.ui.fragment.movies_full_data.another.MoviesPagingAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

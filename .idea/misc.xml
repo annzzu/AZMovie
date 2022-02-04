@@ -19,7 +19,9 @@
         <entry key="app/src/main/res/drawable/indicator_inactive.xml" value="0.37135416666666665" />
         <entry key="app/src/main/res/drawable/round_l_light.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/drawable/round_r_light.xml" value="0.21354166666666666" />
+        <entry key="app/src/main/res/layout-v31/fragment_movie.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35520833333333335" />
+        <entry key="app/src/main/res/layout/fragment_description.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/fragment_intro_slide.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/fragment_item_list_dialog_list_dialog.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/fragment_item_list_dialog_list_dialog_item.xml" value="0.19739583333333333" />
@@ -29,6 +31,7 @@
         <entry key="app/src/main/res/layout/fragment_movies_full_data.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/fragment_network.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/fragment_search_movie.xml" value="0.27395833333333336" />
+        <entry key="app/src/main/res/layout/item_genre.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/item_movie.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/item_trailer_binding.xml" value="0.27395833333333336" />
         <entry key="app/src/main/res/layout/item_trailer_layout.xml" value="0.35520833333333335" />
