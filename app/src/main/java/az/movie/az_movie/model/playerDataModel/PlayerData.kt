@@ -1,5 +1,6 @@
 package az.movie.az_movie.model.playerDataModel
 
+import az.movie.az_movie.util.QualityType
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -8,7 +9,7 @@ data class PlayerData(
     val data: List<EpisodePlayer>?
 ) {
     fun getEpisodeWithIndex(index: Int): EpisodePlayer? = data?.get(index)
-    
+
     val firstEpisode: EpisodePlayer?
         get() {
             return getEpisodeWithIndex(0)
@@ -53,12 +54,19 @@ data class EpisodePlayer(
 
     @JsonClass(generateAdapter = true)
     data class File(
-        val files: List<FileX>? ,
+        val files: List<FileX> ,
         val lang: String? ,
     ) {
+        val file: String?
+            get() {
+                return files.filter { file -> file.quality == QualityType.HIGH.name }[0].src
+                    ?: files.filter { file -> file.quality == QualityType.MEDIUM.name }[0].src
+            }
+
         @JsonClass(generateAdapter = true)
         data class FileX(
             val id: Int? ,
+            val quality: String ,
             val duration: Int? ,
             val src: String? ,
         )

@@ -42,3 +42,5 @@ class GenreAdapter : ListAdapter<Genres.Data , GenreAdapter.ViewHolder>(diffCall
     }
 
 }
+
+

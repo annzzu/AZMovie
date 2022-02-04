@@ -6,49 +6,88 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import az.movie.az_movie.databinding.FragmentMovieBinding
 import az.movie.az_movie.databinding.FragmentMovieBottomSheetBinding
+import az.movie.az_movie.extensions.STRINGS
+import az.movie.az_movie.extensions.invisible
+import az.movie.az_movie.extensions.setImageUrl
+import az.movie.az_movie.extensions.visible
+import az.movie.az_movie.model.playerDataModel.EpisodePlayer
 import az.movie.az_movie.model.playerDataModel.PlayerViewModel
+import az.movie.az_movie.ui.base.BaseBottomSheet
+import az.movie.az_movie.ui.base.BaseFragment
+import az.movie.az_movie.util.response_handler.Resource
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
+const val MOVIE_SEASON = 0
 
-class MovieBottomSheet : BottomSheetDialogFragment() {
+@AndroidEntryPoint
+class MovieBottomSheet :
+    BaseBottomSheet<FragmentMovieBottomSheetBinding>(FragmentMovieBottomSheetBinding::inflate) {
 
     private val args: MovieBottomSheetArgs by navArgs()
     private val playerViewModel: PlayerViewModel by viewModels()
+    private lateinit var langPlayerAdapter: LangPlayerAdapter
 
-    private var _binding: FragmentMovieBottomSheetBinding? = null
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater , container: ViewGroup? ,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        _binding = FragmentMovieBottomSheetBinding.inflate(inflater , container , false)
-        return binding.root
-
-    }
-
-    override fun onViewCreated(view: View , savedInstanceState: Bundle?) {
-        init()
-    }
-
-    private fun init() {
+    override fun init() {
+        observe()
         listeners()
+        binding.rvLang.apply {
+            langPlayerAdapter = LangPlayerAdapter()
+            adapter = langPlayerAdapter
+            layoutManager =
+                LinearLayoutManager(view?.context , LinearLayoutManager.HORIZONTAL , false)
+        }
     }
 
-    private fun listeners() = with (binding) {
-        tvTitle.text = args.title.plus(" ${args.movieId}")
-//        binding.btnTrailer.apply{
-//            if (!args.trailer.isNullOrBlank()){
-//                visible()
-//                setOnClickListener {
-//                    openMovie(args.trailer!!)
-//                }
-//            }
-//
-//        }
+    private fun observe() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            playerViewModel.getMovie(args.movieId , MOVIE_SEASON)
+            playerViewModel.movie.collectLatest { movie ->
+                with(binding) {
+                    when (movie) {
+                        is Resource.Error -> {
+                            tvMovie.text = getString(STRINGS.error)
+                            pbMovie.invisible()
+                        }
+                        is Resource.Loading -> {
+                            pbMovie.visible()
+                        }
+                        is Resource.Success -> {
+                            pbMovie.invisible()
+                            movie.data?.firstEpisode?.let { movie ->
+                                tvMovie.text = getString(STRINGS.movies)
+                                setData(movie)
+                            } ?: run {
+                                tvMovie.visible()
+                                tvMovie.text = getString(STRINGS.nothing_found)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setData(movie: EpisodePlayer) = with(binding) {
+        cvItemPlayer.visible()
+        tvEpisodeTitle.text = movie.title
+        ivPoster.setImageUrl(movie.cover)
+        langPlayerAdapter.submitList(movie.files)
+        langPlayerAdapter.clickCallBack = {
+            openMovie(it)
+        }
+        rvLang.startLayoutAnimation()
+    }
+
+    private fun listeners() = with(binding) {
+        tvTitle.text = args.title
     }
 
     private fun openMovie(url: String) {
@@ -59,8 +98,4 @@ class MovieBottomSheet : BottomSheetDialogFragment() {
         )
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }

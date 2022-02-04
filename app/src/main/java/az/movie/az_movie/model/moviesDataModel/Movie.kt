@@ -30,7 +30,7 @@ data class Movie(
 
     val isMovie: Boolean?
         get() {
-            return seasons?.data?.isNotEmpty() == true && seasons.data.size == 1
+            return seasons?.data?.isNotEmpty() == true && seasons.data.size == 1 && seasons.data[0].number == 0
         }
     val title: String
         get() {
@@ -44,7 +44,7 @@ data class Movie(
 
     val coverR: String?
         get() {
-            return covers?.data?.size1920 ?: covers?.data?.size1050?: posters?.data?.size240
+            return covers?.data?.size1920 ?: covers?.data?.size1050 ?: posters?.data?.size240
         }
 
     val trailer: String?

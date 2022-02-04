@@ -21,7 +21,7 @@ class PlayerViewModel @Inject constructor(private val repository: PlayerReposito
     val movie: SharedFlow<Resource<PlayerData>> = _movie
 
     suspend fun getMovie(movieId: Int , season: Int) = viewModelScope.launch {
-        repository.getPlayerMovie(movieId , season).collectLatest { values ->
+        repository.getPlayerMovie(movieId, season).collectLatest { values ->
             _movie.emit(values)
         }
     }
