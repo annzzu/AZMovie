@@ -85,23 +85,77 @@
         app:layout_constraintTop_toTopOf="@+id/btnImdb"
         tools:listitem="@layout/item_genre" />
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/btnStart"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/clCast"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:padding="10dp"
-        android:text="@string/start"
-        android:contentDescription="@string/app_name"
-        android:foregroundTint="@color/white"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/green_w"
-        app:icon="@drawable/ic_play"
-        app:iconTint="@color/white"
-        android:visibility="invisible"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".18"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnImdb" />
+        app:layout_constraintTop_toBottomOf="@+id/btnImdb">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lDirectors"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDirectors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_regular"
+                android:text="@string/directors"
+                android:textColor="@color/green_dd"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvDirectors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/green_w"
+                android:layoutAnimation="@anim/item_rv_anim"
+                tools:listitem="@layout/item_person" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lActors"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvActors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_regular"
+                android:text="@string/actors"
+                android:textColor="@color/green_dd"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvActors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/green_w"
+                android:layoutAnimation="@anim/item_rv_anim"
+                tools:listitem="@layout/item_person" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvDescription"
@@ -112,11 +166,12 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/font_regular"
+        android:textColor="@color/green_dd"
         android:text="@string/description"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnStart" />
+        app:layout_constraintTop_toBottomOf="@+id/clCast" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnGeo"
@@ -162,31 +217,26 @@
         app:layout_constraintTop_toTopOf="@+id/tvDescription" />
 
     <ScrollView
+        android:id="@+id/sv"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDescription">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDescriptionText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvDescriptionText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/font_regular"
-                android:text="@string/description"
-                android:textSize="15sp"
-                app:layout_constrainedHeight="true"
-                app:layout_constrainedWidth="true" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            android:fontFamily="@font/font_regular"
+            android:text="@string/description"
+            android:textSize="15sp"
+            android:textColor="@color/green_dd"
+            app:layout_constrainedHeight="true"
+            app:layout_constrainedWidth="true" />
     </ScrollView>
-
 
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/pbMovie"
@@ -213,4 +263,21 @@
         app:layout_constraintStart_toEndOf="@+id/ivPoster"
         app:layout_constraintTop_toTopOf="@+id/tvTitle" />
 
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btnStart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:contentDescription="@string/app_name"
+        android:foregroundTint="@color/white"
+        android:padding="10dp"
+        android:text="@string/start"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        app:backgroundTint="@color/green_w"
+        app:icon="@drawable/ic_play"
+        app:iconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent=".7" />
 </androidx.constraintlayout.widget.ConstraintLayout>

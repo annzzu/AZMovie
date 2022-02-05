@@ -1,8 +1,6 @@
 package az.movie.az_movie.model.moviesDataModel
 
-import az.movie.az_movie.model.moviesDataModel.Countries
 import com.squareup.moshi.JsonClass
-import kotlinx.parcelize.Parcelize
 
 @JsonClass(generateAdapter = true)
 data class Movie(
@@ -25,7 +23,9 @@ data class Movie(
     val genres: Genres? ,
     val trailers: Trailers? ,
     val countries: Countries? ,
-    val seasons: Seasons?
+    val seasons: Seasons? ,
+    val actors: People ,
+    val directors: People
 ) {
 
     val isMovie: Boolean?

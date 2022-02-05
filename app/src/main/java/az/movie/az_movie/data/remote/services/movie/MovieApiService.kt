@@ -38,7 +38,7 @@ interface MovieApiService {
     @GET(MovieApiEndpoints.MOVIE_ID)
     suspend fun getMovie(
         @Path("id") id: Int,
-        @Query("filters[with_actors]") with_actors: Int = 1 ,
-        @Query("filters[with_directors]") with_directors: Int = 1 ,
+        @Query("filters[with_actors]") with_actors: Int = 4 ,
+        @Query("filters[with_directors]") with_directors: Int = 2 ,
     ): Response<ItemMovie>
 }

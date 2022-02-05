@@ -12,6 +12,7 @@ import az.movie.az_movie.model.moviesDataModel.Plots
 import az.movie.az_movie.model.moviesDataModel.Seasons
 import az.movie.az_movie.ui.base.BaseFragment
 import az.movie.az_movie.ui.fragment.movie.adapter.GenreAdapter
+import az.movie.az_movie.ui.fragment.movie.adapter.PersonAdapter
 import az.movie.az_movie.util.LangType
 import az.movie.az_movie.util.response_handler.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,11 +25,25 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::i
     private val args: MovieFragmentArgs by navArgs()
     private val movieViewModel: MovieViewModel by viewModels()
     private lateinit var genreAdapter: GenreAdapter
+    private lateinit var actorAdapter: PersonAdapter
+    private lateinit var directorAdapter: PersonAdapter
 
     override fun setInfo() {
         binding.rvGenres.apply {
             genreAdapter = GenreAdapter()
             adapter = genreAdapter
+            layoutManager =
+                LinearLayoutManager(view?.context , LinearLayoutManager.HORIZONTAL , false)
+        }
+        binding.rvActors.apply {
+            actorAdapter = PersonAdapter()
+            adapter = actorAdapter
+            layoutManager =
+                LinearLayoutManager(view?.context , LinearLayoutManager.HORIZONTAL , false)
+        }
+        binding.rvDirectors.apply {
+            directorAdapter = PersonAdapter()
+            adapter = directorAdapter
             layoutManager =
                 LinearLayoutManager(view?.context , LinearLayoutManager.HORIZONTAL , false)
         }
@@ -79,6 +94,12 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::i
             rvGenres.startLayoutAnimation()
         } ?: run {
             rvGenres.invisible()
+        }
+        movie.actors.data?.let {
+            actorAdapter.submitList(movie.genres.data)
+            rvGenres.startLayoutAnimation()
+        } ?: run {
+            lActors.invisible()
         }
 
         setPlot(movie)
