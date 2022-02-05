@@ -96,10 +96,16 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::i
             rvGenres.invisible()
         }
         movie.actors.data?.let {
-            actorAdapter.submitList(movie.genres.data)
-            rvGenres.startLayoutAnimation()
+            actorAdapter.submitList(it)
+            rvActors.startLayoutAnimation()
         } ?: run {
             lActors.invisible()
+        }
+        movie.directors.data?.let {
+            directorAdapter.submitList(it)
+            rvDirectors.startLayoutAnimation()
+        } ?: run {
+            lDirectors.invisible()
         }
 
         setPlot(movie)
