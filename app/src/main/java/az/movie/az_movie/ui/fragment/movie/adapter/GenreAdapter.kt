@@ -1,4 +1,4 @@
-package az.movie.az_movie.ui.fragment.movie
+package az.movie.az_movie.ui.fragment.movie.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -20,7 +20,7 @@ class GenreAdapter : ListAdapter<Genres.Data , GenreAdapter.ViewHolder>(diffCall
             )
         )
 
-    override fun onBindViewHolder(holder: GenreAdapter.ViewHolder , position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder , position: Int) {
         holder.onBind(getItem(position))
     }
 

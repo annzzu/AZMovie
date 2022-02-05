@@ -37,8 +37,11 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
     override fun setInfo() {
         initTrailerSlider()
         initTabVP()
-        binding.btnSearch.apply{
-//            animate().alpha(1f).translationYBy(-50).duration = 1500
+    }
+
+    override fun listener() {
+        binding.btnRetry.setOnClickListener {
+            observeTrailersData()
         }
     }
 
@@ -73,9 +76,17 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
     }
 
     private fun initTrailerObservers() {
+        observeTrailersData()
+        observeTrailersCollector()
+    }
+
+    private fun observeTrailersData() {
         viewLifecycleOwner.lifecycleScope.launch {
             trailerViewModel.getTrailersData()
         }
+    }
+
+    private fun observeTrailersCollector() {
         viewLifecycleOwner.lifecycleScope.launch {
             trailerViewModel.trailers.collectLatest { trailers ->
                 with(binding) {

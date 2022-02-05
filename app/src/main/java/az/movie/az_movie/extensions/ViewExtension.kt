@@ -40,9 +40,9 @@ fun View.getRotationAnimation(): ObjectAnimator {
 
 fun ImageView.setImageUrl(url: String?) {
     if (!url.isNullOrEmpty())
-        Glide.with(context).load(url).placeholder(R.drawable.ic_popcorn).into(this)
+        Glide.with(context).load(url).placeholder(DRAWABLES.ic_popcorn).into(this)
     else
-        setImageResource(R.drawable.ic_launcher_foreground)
+        setImageResource(DRAWABLES.ic_popcorn)
 }
 
 

@@ -1,16 +1,10 @@
-package az.movie.az_movie.ui.fragment.movie
+package az.movie.az_movie.ui.fragment.movie.bottom_sheet
 
-import android.os.Bundle
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import az.movie.az_movie.databinding.FragmentMovieBinding
 import az.movie.az_movie.databinding.FragmentMovieBottomSheetBinding
 import az.movie.az_movie.extensions.STRINGS
 import az.movie.az_movie.extensions.invisible
@@ -19,7 +13,7 @@ import az.movie.az_movie.extensions.visible
 import az.movie.az_movie.model.playerDataModel.EpisodePlayer
 import az.movie.az_movie.model.playerDataModel.PlayerViewModel
 import az.movie.az_movie.ui.base.BaseBottomSheet
-import az.movie.az_movie.ui.base.BaseFragment
+import az.movie.az_movie.ui.fragment.movie.adapter.LangPlayerAdapter
 import az.movie.az_movie.util.response_handler.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest

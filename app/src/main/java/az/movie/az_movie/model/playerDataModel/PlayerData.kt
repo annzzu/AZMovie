@@ -27,6 +27,11 @@ data class EpisodePlayer(
     val files: List<File>? ,
     val title: String? ,
 ) {
+    val episodeTitle:String?
+        get(){
+            return "$episode. $title"
+        }
+
     val cover: String?
         get() {
             return covers?.x1920 ?: covers?.x1050 ?: covers?.x510 ?: covers?.x367

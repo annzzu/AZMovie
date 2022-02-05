@@ -1,6 +1,5 @@
 package az.movie.az_movie.ui.fragment.movie
 
-import android.util.Log.d
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -10,7 +9,9 @@ import az.movie.az_movie.databinding.FragmentMovieBinding
 import az.movie.az_movie.extensions.*
 import az.movie.az_movie.model.moviesDataModel.Movie
 import az.movie.az_movie.model.moviesDataModel.Plots
+import az.movie.az_movie.model.moviesDataModel.Seasons
 import az.movie.az_movie.ui.base.BaseFragment
+import az.movie.az_movie.ui.fragment.movie.adapter.GenreAdapter
 import az.movie.az_movie.util.LangType
 import az.movie.az_movie.util.response_handler.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +31,6 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::i
             adapter = genreAdapter
             layoutManager =
                 LinearLayoutManager(view?.context , LinearLayoutManager.HORIZONTAL , false)
-            startLayoutAnimation()
         }
     }
 
@@ -73,11 +73,33 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::i
         ivPoster.setImageUrl(movie.poster)
         tvTitle.text = movie.title
         ivPoster.clipToOutline = true
+
         movie.genres?.data?.let {
             genreAdapter.submitList(movie.genres.data)
+            rvGenres.startLayoutAnimation()
         } ?: run {
             rvGenres.invisible()
         }
+
+        setPlot(movie)
+
+        binding.btnStart.apply {
+            if (movie.isMovie != null && movie.isMovie == true) {
+                visible()
+                setOnClickListener {
+                    openMovieBottomSheet(movie.id , movie.title)
+                }
+            }
+            if (movie.isMovie != null && movie.isMovie == false){
+                visible()
+                setOnClickListener {
+                    openSeriesBottomSheet(movie.id , movie.title, movie.seasons!!)
+                }
+            }
+        }
+    }
+
+    private fun setPlot(movie:Movie) = with(binding){
         if (movie.plots?.data?.isNotEmpty() == true) {
             movie.plots.data.let { plots ->
                 tvDescriptionText.text = plots[0].description
@@ -104,21 +126,20 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::i
                 }
             }
         }
-
-        binding.btnStart.apply {
-            if (movie.isMovie != null && movie.isMovie == true) {
-                visible()
-                setOnClickListener {
-                    openBottomSheet(movie.id , movie.title)
-                }
-            }
-        }
     }
 
-    private fun openBottomSheet(movieId: Int , title: String) {
+    private fun openMovieBottomSheet(movieId: Int , title: String) {
         findNavController().navigate(
             MovieFragmentDirections.actionNavigationMovieToMovieBottomSheet(
                 movieId , title
+            )
+        )
+    }
+
+    private fun openSeriesBottomSheet(movieId: Int , title: String, seasons: Seasons) {
+        findNavController().navigate(
+            MovieFragmentDirections.actionNavigationMovieToSeriesBottomSheet(
+                movieId , title, seasons
             )
         )
     }

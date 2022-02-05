@@ -1,13 +1,11 @@
-package az.movie.az_movie.ui.fragment.movie
+package az.movie.az_movie.ui.fragment.movie.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ListAdapter
-import az.movie.az_movie.databinding.ItemGenreBinding
 import az.movie.az_movie.databinding.ItemLangBinding
-import az.movie.az_movie.model.moviesDataModel.Genres
 import az.movie.az_movie.model.playerDataModel.EpisodePlayer
 import az.movie.az_movie.ui.base.ClickCallBack
 
@@ -25,7 +23,7 @@ class LangPlayerAdapter :
             )
         )
 
-    override fun onBindViewHolder(holder: LangPlayerAdapter.ViewHolder , position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder , position: Int) {
         holder.onBind(getItem(position))
     }
 

@@ -1,6 +1,7 @@
 package az.movie.az_movie.ui.base
 
 import android.os.Bundle
+import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

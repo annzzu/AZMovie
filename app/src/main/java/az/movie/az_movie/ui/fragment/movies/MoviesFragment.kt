@@ -23,26 +23,51 @@ class MoviesFragment : BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding
 
     override fun setInfo() {
         initRV()
+    }
+
+    override fun listener() {
+        binding.btnRetry.setOnClickListener {
+            observeMovieData()
+        }
+    }
+
+    override fun observer() {
+        observeMovieData()
+        observeMovieCollector()
+    }
+
+    private fun observeMovieData() {
         viewLifecycleOwner.lifecycleScope.launch {
             moviesViewModel.getMoviesTopData(series)
+        }
+    }
+
+    private fun observeMovieCollector() {
+        viewLifecycleOwner.lifecycleScope.launch {
             moviesViewModel.movieTopData.collectLatest {
-                when (it) {
-                    is Resource.Error -> {
-                        binding.pbMovies.invisible()
-                        binding.tvNothingFound.visible()
-                        binding.tvNothingFound.text = getString(STRINGS.error)
-                        binding.root.showSnackBar(it.message!!)
-                    }
-                    is Resource.Loading -> {
-                        binding.pbMovies.visible()
-                    }
-                    is Resource.Success -> {
-                        binding.pbMovies.invisible()
-                        it.data?.data?.let { value ->
-                            moviesTopAdapter.submitList(value)
-                            binding.tvNothingFound.invisible()
-                        } ?: run {
-                            binding.tvNothingFound.visible()
+                with(binding) {
+                    when (it) {
+                        is Resource.Error -> {
+                            pbMovies.invisible()
+                            tvNothingFound.visible()
+                            tvNothingFound.text = getString(STRINGS.error)
+                            btnRetry.visible()
+                            root.showSnackBar(it.message!!)
+                        }
+                        is Resource.Loading -> {
+                            pbMovies.visible()
+                            btnRetry.invisible()
+                        }
+                        is Resource.Success -> {
+                            pbMovies.invisible()
+                            btnRetry.invisible()
+                            it.data?.data?.let { value ->
+                                moviesTopAdapter.submitList(value)
+                                rvMovies.startLayoutAnimation()
+                                tvNothingFound.invisible()
+                            } ?: run {
+                                tvNothingFound.visible()
+                            }
                         }
                     }
                 }

@@ -10,6 +10,7 @@ import az.movie.az_movie.model.trailerDataModel.Trailer
 import az.movie.az_movie.ui.base.ClickCallBack
 
 typealias ClickIntCallBack = (int: Int) -> Unit
+
 class TrailerAdapter() : RecyclerView.Adapter<TrailerAdapter.ViewHolder>() {
 
     private var trailerSlides = mutableListOf<Trailer>()
