@@ -19,6 +19,9 @@ fun String.addInfoNationality(info: Boolean? , formatted: String): String =
 
 fun String.replaceSpaceWithT() = this.replace(" " , "T")
 
+fun String.getNextLine() =
+    this.replace(" " , "\n")
+
 fun String.getTimeNextLine() =
     this.replace("-" , "\n")
 

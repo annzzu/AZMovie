@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ListAdapter
 import az.movie.az_movie.databinding.ItemGenreBinding
 import az.movie.az_movie.databinding.ItemPersonBinding
+import az.movie.az_movie.extensions.setImageUrl
 import az.movie.az_movie.model.moviesDataModel.Genres
 import az.movie.az_movie.model.moviesDataModel.Person
 
@@ -30,6 +31,7 @@ class PersonAdapter : ListAdapter<Person , PersonAdapter.ViewHolder>(diffCallbac
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(model: Person) = with(binding) {
             tvName.text = model.name
+            binding.imPerson.setImageUrl(model.poster)
         }
     }
 

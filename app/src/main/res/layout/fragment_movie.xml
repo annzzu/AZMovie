@@ -91,7 +91,7 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent=".18"
+        app:layout_constraintHeight_percent=".2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnImdb">
 
@@ -120,7 +120,6 @@
                 android:id="@+id/rvDirectors"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/green_w"
                 android:layoutAnimation="@anim/item_rv_anim"
                 tools:listitem="@layout/item_person" />
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -150,7 +149,6 @@
                 android:id="@+id/rvActors"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/green_w"
                 android:layoutAnimation="@anim/item_rv_anim"
                 tools:listitem="@layout/item_person" />
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -162,7 +160,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/font_regular"
