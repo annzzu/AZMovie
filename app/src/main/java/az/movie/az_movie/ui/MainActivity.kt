@@ -98,15 +98,17 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
         destination: NavDestination ,
         arguments: Bundle?
     ) {
-        when (destination.id) {
+        requestedOrientation = when (destination.id) {
             IDS.navigationSearchMovie, IDS.navigationMovie -> {
                 goBack()
-                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
             }
-            IDS.navigationPlayer ->
-                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
+            IDS.navigationPlayer ->{
+                binding.btnBack.invisible()
+                ActivityInfo.SCREEN_ORIENTATION_SENSOR
+            }
             else -> {
-                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
             }
         }
     }

@@ -121,4 +121,5 @@ dependencies {
     implementation "com.google.android.exoplayer:exoplayer-hls:$exoplayer"
     implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayer"
     implementation "com.google.android.exoplayer:exoplayer-smoothstreaming:$exoplayer"
+    implementation "com.google.android.exoplayer:exoplayer:$exoplayer"
 }
