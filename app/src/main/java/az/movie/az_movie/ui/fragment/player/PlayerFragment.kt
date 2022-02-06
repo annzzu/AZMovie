@@ -1,53 +1,62 @@
 package az.movie.az_movie.ui.fragment.player
 
 import android.annotation.SuppressLint
+import android.net.Uri
 import android.util.Log
+import android.util.Log.d
 import android.view.View
 import androidx.navigation.fragment.navArgs
 import az.movie.az_movie.databinding.FragmentPlayerBinding
+import az.movie.az_movie.extensions.STRINGS
 import az.movie.az_movie.ui.base.BaseFragment
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.util.Util
+import com.google.common.collect.ImmutableList
+import com.google.android.exoplayer2.C
+import com.google.android.exoplayer2.MediaItem.SubtitleConfiguration
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
+import com.google.android.exoplayer2.util.MimeTypes
+
 
 //@AndroidEntryPoint
 class PlayerFragment : BaseFragment<FragmentPlayerBinding>(FragmentPlayerBinding::inflate) {
 
     private val args: PlayerFragmentArgs by navArgs()
 
-    private val playbackStateListener: Player.EventListener = playbackStateListener()
+    private val playbackStateListener: Player.Listener = playbackStateListener()
     private var player: ExoPlayer? = null
 
-    private var playWhenReady = true
+    private var playWhenReadyBoolean = true
     private var currentWindow = 0
     private var playbackPosition = 0L
 
 
     private fun initPlayer() {
-        player = ExoPlayer.Builder(requireContext()).build().also { exoPlayer->
+        player = ExoPlayer.Builder(requireContext()).build().also { exoPlayer ->
             binding.exoPlayer.player = exoPlayer
-            val mediaItem = MediaItem.fromUri(args.url)
-            exoPlayer.setMediaItem(mediaItem)
-            exoPlayer.playWhenReady = playWhenReady
-            exoPlayer.seekTo(currentWindow , playbackPosition)
-            exoPlayer.addListener(playbackStateListener)
-            exoPlayer.prepare()
+            val mediaItem = if (!args.subtitle.isNullOrBlank()) {
+                MediaItem.Builder().setUri(Uri.parse(args.url)).setSubtitleConfigurations(
+                    ImmutableList.of(
+                        SubtitleConfiguration.Builder(Uri.parse(args.subtitle))
+                            .setMimeType(MimeTypes.TEXT_VTT)
+                            .setLanguage(getString(STRINGS.string))
+                            .build()
+                    )
+                ).build()
+            } else {
+                MediaItem.Builder().setUri(Uri.parse(args.url)).build()
+            }
+
+            exoPlayer.apply {
+                setMediaItem(mediaItem)
+                prepare()
+                playWhenReady = playWhenReadyBoolean
+                seekTo(currentWindow , playbackPosition)
+                addListener(playbackStateListener)
+            }
         }
-//        player = SimpleExoPlayer.Builder(requireContext())
-//            .build()
-//            .also { exoPlayer ->
-//                binding.exoPlayer.player = exoPlayer
-//                val mediaItem = MediaItem.Builder()
-//                    .setUri(args.url)
-//                    .setMimeType(MimeTypes.APPLICATION_MPD)
-//                    .build()
-//                exoPlayer.setMediaItem(mediaItem)
-//                exoPlayer.playWhenReady = playWhenReady
-//                exoPlayer.seekTo(currentWindow , playbackPosition)
-//                exoPlayer.addListener(playbackStateListener)
-//                exoPlayer.prepare()
-//            }
     }
 
     override fun init() {
@@ -81,7 +90,7 @@ class PlayerFragment : BaseFragment<FragmentPlayerBinding>(FragmentPlayerBinding
     private fun releasePlayer() {
         player?.run {
             playbackPosition = this.currentPosition
-            currentWindow = this.currentWindowIndex
+            currentWindow = this.currentMediaItemIndex
             playWhenReady = this.playWhenReady
             removeListener(playbackStateListener)
             release()
@@ -101,7 +110,7 @@ class PlayerFragment : BaseFragment<FragmentPlayerBinding>(FragmentPlayerBinding
 
 }
 
-private fun playbackStateListener() = object : Player.EventListener {
+private fun playbackStateListener(): Player.Listener = object : Player.Listener {
     override fun onPlaybackStateChanged(playbackState: Int) {
         val stateString: String = when (playbackState) {
             ExoPlayer.STATE_IDLE -> "ExoPlayer.STATE_IDLE      -"
@@ -110,7 +119,6 @@ private fun playbackStateListener() = object : Player.EventListener {
             ExoPlayer.STATE_ENDED -> "ExoPlayer.STATE_ENDED     -"
             else -> "UNKNOWN_STATE             -"
         }
-        Log.d(TAG , "changed state to $stateString")
     }
 }
 

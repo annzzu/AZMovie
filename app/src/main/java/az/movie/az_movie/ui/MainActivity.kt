@@ -70,6 +70,7 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
         lifecycleScope.launch {
             val isFirstTimeLaunch = prefsManager.isFirstTimeLaunch()
             if (isFirstTimeLaunch) {
+                supportFragmentManager.popBackStack()
                 navigationWithMotion(IDS.navigationIntro)
                 prefsManager.setAnotherTimeLaunch()
             }
@@ -117,7 +118,8 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
         binding.btnBack.apply {
             visible()
             setOnClickListener {
-                navController.popBackStack(IDS.navigationMain, true)
+                supportFragmentManager.popBackStack()
+                navigationWithMotion(IDS.navigationMain)
                 binding.btnBack.invisible()
             }
         }

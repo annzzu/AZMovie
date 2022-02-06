@@ -9,7 +9,7 @@ import az.movie.az_movie.databinding.FragmentSeriesBottomSheetBinding
 import az.movie.az_movie.extensions.STRINGS
 import az.movie.az_movie.extensions.invisible
 import az.movie.az_movie.extensions.visible
-import az.movie.az_movie.model.playerDataModel.PlayerViewModel
+import az.movie.az_movie.ui.fragment.movie.PlayerViewModel
 import az.movie.az_movie.ui.base.BaseBottomSheet
 import az.movie.az_movie.ui.fragment.movie.adapter.SeasonAdapter
 import az.movie.az_movie.ui.fragment.movie.adapter.SeriesAdapter
@@ -115,13 +115,13 @@ class SeriesBottomSheet :
             adapter = seriesAdapter
             layoutManager =
                 LinearLayoutManager(view?.context , LinearLayoutManager.HORIZONTAL , false)
-            seriesAdapter.clickCallBack = { openMovie(it) }
+            seriesAdapter.clickStringsCallBack = { file , subtitle -> openMovie(file , subtitle) }
         }
     }
 
-    private fun openMovie(url: String) {
+    private fun openMovie(url: String , subtitle: String?) {
         findNavController().navigate(
-            SeriesBottomSheetDirections.actionSeriesBottomSheetToPlayerFragment(url)
+            SeriesBottomSheetDirections.actionSeriesBottomSheetToPlayerFragment(url , subtitle)
         )
     }
 

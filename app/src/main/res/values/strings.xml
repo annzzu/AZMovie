@@ -36,4 +36,5 @@
     <string name="actors">Actors</string>
     <string name="play">Play</string>
     <string name="movie">Movie</string>
+    <string name="string">String</string>
 </resources>

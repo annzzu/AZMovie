@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.ListAdapter
 import az.movie.az_movie.databinding.ItemLangBinding
 import az.movie.az_movie.model.playerDataModel.EpisodePlayer
 import az.movie.az_movie.ui.base.ClickCallBack
+import az.movie.az_movie.util.typealiases.ClickStringsCallBack
 
 class LangPlayerAdapter :
     ListAdapter<EpisodePlayer.File , LangPlayerAdapter.ViewHolder>(diffCallback) {
 
-    var clickCallBack: ClickCallBack? = null
+    var clickStringsCallBack: ClickStringsCallBack? = null
 
     override fun onCreateViewHolder(parent: ViewGroup , viewType: Int) =
         ViewHolder(
@@ -33,7 +34,7 @@ class LangPlayerAdapter :
             tvTitle.text = model.lang
             if (!model.file.isNullOrBlank()) {
                 root.setOnClickListener {
-                    clickCallBack?.invoke(model.file!!)
+                    clickStringsCallBack?.invoke(model.file!!, model.lang)
                 }
             }
 

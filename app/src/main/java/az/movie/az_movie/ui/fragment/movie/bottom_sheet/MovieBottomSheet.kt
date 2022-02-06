@@ -1,5 +1,6 @@
 package az.movie.az_movie.ui.fragment.movie.bottom_sheet
 
+import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -11,9 +12,10 @@ import az.movie.az_movie.extensions.invisible
 import az.movie.az_movie.extensions.setImageUrl
 import az.movie.az_movie.extensions.visible
 import az.movie.az_movie.model.playerDataModel.EpisodePlayer
-import az.movie.az_movie.model.playerDataModel.PlayerViewModel
+import az.movie.az_movie.ui.fragment.movie.PlayerViewModel
 import az.movie.az_movie.ui.base.BaseBottomSheet
 import az.movie.az_movie.ui.fragment.movie.adapter.LangPlayerAdapter
+import az.movie.az_movie.ui.fragment.player.TAG
 import az.movie.az_movie.util.response_handler.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -74,8 +76,12 @@ class MovieBottomSheet :
         tvEpisodeTitle.text = movie.title
         ivPoster.setImageUrl(movie.cover)
         langPlayerAdapter.submitList(movie.files)
-        langPlayerAdapter.clickCallBack = {
-            openMovie(it)
+        langPlayerAdapter.clickStringsCallBack = { file , subtitle ->
+            Log.d(
+                TAG ,
+                "mgeli mtaze micocavs ${movie.subtitleUrl(subtitle)} - $subtitle - $file"
+            )
+            openMovie(file , movie.subtitleUrl(subtitle))
         }
         rvLang.startLayoutAnimation()
     }
@@ -84,10 +90,10 @@ class MovieBottomSheet :
         tvTitle.text = args.title
     }
 
-    private fun openMovie(url: String) {
+    private fun openMovie(url: String , subtitle: String?) {
         findNavController().navigate(
             MovieBottomSheetDirections.actionMovieBottomSheetToPlayerFragment(
-                url
+                url , subtitle
             )
         )
     }

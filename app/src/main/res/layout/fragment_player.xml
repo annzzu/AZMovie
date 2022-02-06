@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.exoplayer2.ui.StyledPlayerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/black"
     android:id="@+id/exoPlayer"
     android:layout_width="match_parent"
@@ -8,5 +9,14 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:show_shuffle_button="true"
-    app:show_subtitle_button="true"/>
+    app:played_color="@color/orange_l"
+    app:played_ad_marker_color="@color/green_w"
+    app:buffered_color="@color/green_w"
+    app:unplayed_color="@color/green_w"
+    app:ad_marker_color="@color/orange_l"
+    app:show_subtitle_button="true"
+    android:keepScreenOn="true"
+    app:auto_show="true"
+    app:use_controller="true"
+    android:layoutMode="opticalBounds"
+    app:shutter_background_color="@color/green_d" />

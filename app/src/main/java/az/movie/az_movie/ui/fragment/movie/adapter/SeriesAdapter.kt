@@ -1,5 +1,6 @@
 package az.movie.az_movie.ui.fragment.movie.adapter
 
+import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.*
@@ -8,11 +9,13 @@ import az.movie.az_movie.extensions.setImageUrl
 import az.movie.az_movie.extensions.visible
 import az.movie.az_movie.model.playerDataModel.EpisodePlayer
 import az.movie.az_movie.ui.base.ClickCallBack
+import az.movie.az_movie.ui.fragment.player.TAG
+import az.movie.az_movie.util.typealiases.ClickStringsCallBack
 
 class SeriesAdapter :
     ListAdapter<EpisodePlayer , SeriesAdapter.ViewHolder>(DiffCallback()) {
 
-    var clickCallBack: ClickCallBack? = null
+    var clickStringsCallBack: ClickStringsCallBack? = null
     private lateinit var langPlayerAdapter: LangPlayerAdapter
 
     override fun onCreateViewHolder(parent: ViewGroup , viewType: Int) =
@@ -42,8 +45,9 @@ class SeriesAdapter :
                     GridLayoutManager(this@ViewHolder.itemView.context , 2, LinearLayoutManager.HORIZONTAL , false)
             }
             langPlayerAdapter.submitList(model.files)
-            langPlayerAdapter.clickCallBack = {
-                clickCallBack?.invoke(it)
+            langPlayerAdapter.clickStringsCallBack = { file, lang->
+                d(TAG, "micocda ${model.subtitleUrl(lang)}")
+                clickStringsCallBack?.invoke(file, model.subtitleUrl(lang))
             }
             rvLang.startLayoutAnimation()
         }

@@ -1,6 +1,8 @@
 package az.movie.az_movie.model.playerDataModel
 
+import az.movie.az_movie.model.enums.LangType
 import az.movie.az_movie.model.enums.QualityType
+import com.google.android.exoplayer2.text.Subtitle
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -8,7 +10,8 @@ import com.squareup.moshi.JsonClass
 data class PlayerData(
     val data: List<EpisodePlayer>?
 ) {
-    fun getEpisodeWithIndex(index: Int): EpisodePlayer? = data?.get(index)
+
+    private fun getEpisodeWithIndex(index: Int): EpisodePlayer? = data?.get(index)
 
     val firstEpisode: EpisodePlayer?
         get() {
@@ -27,8 +30,8 @@ data class EpisodePlayer(
     val files: List<File>? ,
     val title: String? ,
 ) {
-    val episodeTitle:String?
-        get(){
+    val episodeTitle: String?
+        get() {
             return "$episode. $title"
         }
 
@@ -42,6 +45,15 @@ data class EpisodePlayer(
         get() {
             return !files.isNullOrEmpty()
         }
+
+    fun subtitleUrl(lang: String?): String? {
+        val subtitle = files?.findLast { file ->
+            !file.subtitleSetUrl(lang).isNullOrBlank()
+        }?.subtitleSetUrl(lang) ?: files?.findLast { file ->
+            !file.subtitleEngUrl.isNullOrBlank()
+        }?.subtitleSetUrl(lang)
+        return subtitle
+    }
 
     @JsonClass(generateAdapter = true)
     data class Covers(
@@ -61,12 +73,29 @@ data class EpisodePlayer(
     data class File(
         val files: List<FileX> ,
         val lang: String? ,
+        val subtitles: List<Subtitle>? ,
     ) {
         val file: String?
             get() {
                 return files.filter { file -> file.quality == QualityType.HIGH.name }[0].src
                     ?: files.filter { file -> file.quality == QualityType.MEDIUM.name }[0].src
             }
+
+        val subtitleEngUrl: String?
+            get() {
+                return subtitles?.findLast { subtitle ->
+                    LangType.ENG.name.lowercase() == subtitle.lang?.uppercase()
+                }?.url
+            }
+
+        fun subtitleSetUrl(language: String?): String? =
+            subtitles?.findLast { subtitle -> language == subtitle.lang?.uppercase() }?.url
+
+        @JsonClass(generateAdapter = true)
+        data class Subtitle(
+            val url: String? ,
+            val lang: String? ,
+        )
 
         @JsonClass(generateAdapter = true)
         data class FileX(
