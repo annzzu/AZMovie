@@ -13,7 +13,7 @@ import az.movie.az_movie.ui.fragment.movie.PlayerViewModel
 import az.movie.az_movie.ui.base.BaseBottomSheet
 import az.movie.az_movie.ui.fragment.movie.adapter.SeasonAdapter
 import az.movie.az_movie.ui.fragment.movie.adapter.SeriesAdapter
-import az.movie.az_movie.util.response_handler.Resource
+import az.movie.az_movie.domain.response_handler.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

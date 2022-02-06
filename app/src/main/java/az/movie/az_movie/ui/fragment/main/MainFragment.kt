@@ -18,7 +18,7 @@ import az.movie.az_movie.extensions.visible
 import az.movie.az_movie.ui.base.BaseFragment
 import az.movie.az_movie.ui.fragment.trailer.TrailerAdapter
 import az.movie.az_movie.util.animations.ZoomOutPageTransformer
-import az.movie.az_movie.util.response_handler.Resource
+import az.movie.az_movie.domain.response_handler.Resource
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest

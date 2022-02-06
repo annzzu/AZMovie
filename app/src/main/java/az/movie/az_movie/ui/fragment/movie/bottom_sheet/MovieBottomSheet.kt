@@ -11,12 +11,12 @@ import az.movie.az_movie.extensions.STRINGS
 import az.movie.az_movie.extensions.invisible
 import az.movie.az_movie.extensions.setImageUrl
 import az.movie.az_movie.extensions.visible
-import az.movie.az_movie.model.playerDataModel.EpisodePlayer
+import az.movie.az_movie.domain.model.playerDataModel.EpisodePlayer
 import az.movie.az_movie.ui.fragment.movie.PlayerViewModel
 import az.movie.az_movie.ui.base.BaseBottomSheet
 import az.movie.az_movie.ui.fragment.movie.adapter.LangPlayerAdapter
 import az.movie.az_movie.ui.fragment.player.TAG
-import az.movie.az_movie.util.response_handler.Resource
+import az.movie.az_movie.domain.response_handler.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

@@ -3,8 +3,8 @@ package az.movie.az_movie.ui.fragment.movie
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import az.movie.az_movie.data.repository.player.PlayerRepositoryImpl
-import az.movie.az_movie.model.playerDataModel.PlayerData
-import az.movie.az_movie.util.response_handler.Resource
+import az.movie.az_movie.domain.model.playerDataModel.PlayerData
+import az.movie.az_movie.domain.response_handler.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow

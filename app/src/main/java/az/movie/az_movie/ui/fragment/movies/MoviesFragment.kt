@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import az.movie.az_movie.databinding.FragmentMoviesBinding
 import az.movie.az_movie.extensions.*
 import az.movie.az_movie.ui.base.BaseFragment
-import az.movie.az_movie.util.response_handler.Resource
+import az.movie.az_movie.domain.response_handler.Resource
 import az.movie.az_movie.util.typealiases.ClickIntCallBack
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest

@@ -5,11 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ListAdapter
-import az.movie.az_movie.databinding.ItemGenreBinding
 import az.movie.az_movie.databinding.ItemPersonBinding
 import az.movie.az_movie.extensions.setImageUrl
-import az.movie.az_movie.model.moviesDataModel.Genres
-import az.movie.az_movie.model.moviesDataModel.Person
+import az.movie.az_movie.domain.model.moviesDataModel.Person
 
 
 class PersonAdapter : ListAdapter<Person , PersonAdapter.ViewHolder>(diffCallback) {

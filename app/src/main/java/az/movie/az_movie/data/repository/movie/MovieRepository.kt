@@ -1,8 +1,8 @@
 package az.movie.az_movie.data.repository.movie
 
-import az.movie.az_movie.model.moviesDataModel.ItemMovie
-import az.movie.az_movie.model.moviesDataModel.MovieData
-import az.movie.az_movie.util.response_handler.Resource
+import az.movie.az_movie.domain.model.moviesDataModel.ItemMovie
+import az.movie.az_movie.domain.model.moviesDataModel.MovieData
+import az.movie.az_movie.domain.response_handler.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 

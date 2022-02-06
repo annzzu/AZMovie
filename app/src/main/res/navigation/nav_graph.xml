@@ -92,7 +92,7 @@
             app:argType="string" />
         <argument
             android:name="seasons"
-            app:argType="az.movie.az_movie.model.moviesDataModel.Seasons" />
+            app:argType="az.movie.az_movie.domain.model.moviesDataModel.Seasons" />
         <action
             android:id="@+id/action_seriesBottomSheet_to_playerFragment"
             app:destination="@id/navigationPlayer" />

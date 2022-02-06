@@ -6,8 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ListAdapter
 import az.movie.az_movie.databinding.ItemLangBinding
-import az.movie.az_movie.model.playerDataModel.EpisodePlayer
-import az.movie.az_movie.ui.base.ClickCallBack
+import az.movie.az_movie.domain.model.playerDataModel.EpisodePlayer
 import az.movie.az_movie.util.typealiases.ClickStringsCallBack
 
 class LangPlayerAdapter :

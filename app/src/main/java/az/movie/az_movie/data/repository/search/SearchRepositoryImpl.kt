@@ -1,10 +1,9 @@
 package az.movie.az_movie.data.repository.search
 
 import az.movie.az_movie.data.remote.datasources.search.SearchDataSource
-import az.movie.az_movie.model.moviesDataModel.MovieData
-import az.movie.az_movie.model.playerDataModel.PlayerData
-import az.movie.az_movie.util.response_handler.Resource
-import az.movie.az_movie.util.response_handler.handleResponse
+import az.movie.az_movie.domain.model.moviesDataModel.MovieData
+import az.movie.az_movie.domain.response_handler.Resource
+import az.movie.az_movie.domain.response_handler.handleResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow

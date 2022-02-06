@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ListAdapter
 import az.movie.az_movie.databinding.ItemSeasonBinding
 import az.movie.az_movie.extensions.COLORS
-import az.movie.az_movie.model.moviesDataModel.Season
+import az.movie.az_movie.domain.model.moviesDataModel.Season
 import az.movie.az_movie.util.typealiases.ClickSeasonCallBack
 
 

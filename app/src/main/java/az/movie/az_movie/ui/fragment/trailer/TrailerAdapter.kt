@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import az.movie.az_movie.databinding.ItemTrailerLayoutBinding
 import az.movie.az_movie.extensions.setImageUrl
-import az.movie.az_movie.model.trailerDataModel.Trailer
+import az.movie.az_movie.domain.model.trailerDataModel.Trailer
 import az.movie.az_movie.util.typealiases.ClickIntCallBack
 
 class TrailerAdapter() : RecyclerView.Adapter<TrailerAdapter.ViewHolder>() {
