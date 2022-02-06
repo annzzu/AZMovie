@@ -24,8 +24,8 @@ data class Movie(
     val trailers: Trailers? ,
     val countries: Countries? ,
     val seasons: Seasons? ,
-    val actors: People ,
-    val directors: People
+    val actors: People? ,
+    val directors: People?
 ) {
 
     val isMovie: Boolean?

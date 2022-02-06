@@ -1,22 +1,16 @@
 package az.movie.az_movie.ui.fragment.movie.bottom_sheet
 
-import android.util.Log.d
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import az.movie.az_movie.databinding.FragmentMovieBottomSheetBinding
 import az.movie.az_movie.databinding.FragmentSeriesBottomSheetBinding
 import az.movie.az_movie.extensions.STRINGS
 import az.movie.az_movie.extensions.invisible
-import az.movie.az_movie.extensions.setImageUrl
 import az.movie.az_movie.extensions.visible
-import az.movie.az_movie.model.playerDataModel.EpisodePlayer
 import az.movie.az_movie.model.playerDataModel.PlayerViewModel
 import az.movie.az_movie.ui.base.BaseBottomSheet
-import az.movie.az_movie.ui.fragment.movie.adapter.LangPlayerAdapter
 import az.movie.az_movie.ui.fragment.movie.adapter.SeasonAdapter
 import az.movie.az_movie.ui.fragment.movie.adapter.SeriesAdapter
 import az.movie.az_movie.util.response_handler.Resource
@@ -62,6 +56,7 @@ class SeriesBottomSheet :
                             pbMovie.invisible()
                         }
                         is Resource.Loading -> {
+                            rvSeries.invisible()
                             pbMovie.visible()
                         }
                         is Resource.Success -> {
@@ -102,10 +97,11 @@ class SeriesBottomSheet :
             args.seasons.clickSeason(1)
             seasonAdapter.submitList(args.seasons.data!!)
             seasonAdapter.clickSeasonCallBack = { season , position ->
-                d("testing AZ-DM", "$season, $position, ${args.seasons.findChosen()}")
-                if (season != args.seasons.findChosenNum()) {
-                    args.seasons.findChosen()?.let { it1 -> seasonAdapter.clickNotify(it1) }
+                if (season != args.seasons.lastNum()) {
+                    val lastIndex = args.seasons.lastIndex()
                     args.seasons.clickSeason(season)
+                    lastIndex?.let { seasonAdapter.clickNotify(it) }
+                    seasonAdapter.clickNotify(position)
                     observeSeriesRequest(args.movieId , season)
                 }
             }
@@ -119,17 +115,13 @@ class SeriesBottomSheet :
             adapter = seriesAdapter
             layoutManager =
                 LinearLayoutManager(view?.context , LinearLayoutManager.HORIZONTAL , false)
-            seriesAdapter.clickCallBack = {
-                openMovie(it)
-            }
+            seriesAdapter.clickCallBack = { openMovie(it) }
         }
     }
 
     private fun openMovie(url: String) {
         findNavController().navigate(
-            SeriesBottomSheetDirections.actionSeriesBottomSheetToPlayerFragment(
-                url
-            )
+            SeriesBottomSheetDirections.actionSeriesBottomSheetToPlayerFragment(url)
         )
     }
 

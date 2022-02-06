@@ -18,6 +18,9 @@
             app:destination="@id/navigationMovie"
             app:popUpTo="@id/navigationMain"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_navigationMain_to_searchMovieFragment"
+            app:destination="@id/navigationSearchMovie" />
 
     </fragment>
 
@@ -32,12 +35,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigationSearchMovie"
-        android:name="az.movie.az_movie.ui.fragment.search."
-        android:label="fragment_search_movie"
-        tools:layout="@layout/fragment_search_movie" />
-
-    <fragment
         android:id="@+id/navigationNetwork"
         android:name="az.movie.az_movie.ui.fragment.network.NetworkFragment"
         android:label="NetworkFragment"
@@ -48,9 +45,6 @@
         android:name="az.movie.az_movie.ui.fragment.movies.MoviesFragment"
         android:label="fragment_movies"
         tools:layout="@layout/fragment_movies">
-        <action
-            android:id="@+id/action_navigationMovies_to_navigationMoviesFullData"
-            app:destination="@id/navigationMoviesFullData" />
     </fragment>
 
     <fragment
@@ -69,18 +63,6 @@
             app:destination="@id/seriesBottomSheet" />
     </fragment>
 
-    <fragment
-        android:id="@+id/navigationMoviesFullData"
-        android:name="az.movie.az_movie.MoviesFullDataFragment"
-        android:label="fragment_movies_full_data"
-        tools:layout="@layout/fragment_movies_full_data">
-        <argument
-            android:name="series"
-            android:defaultValue="false"
-            app:argType="boolean" />
-
-    </fragment>
-
     <dialog
         android:id="@+id/movieBottomSheet"
         android:name="az.movie.az_movie.ui.fragment.movie.bottom_sheet.MovieBottomSheet"
@@ -94,7 +76,7 @@
             app:argType="string" />
         <action
             android:id="@+id/action_movieBottomSheet_to_playerFragment"
-            app:destination="@id/playerFragment" />
+            app:destination="@id/navigationPlayer" />
     </dialog>
 
     <dialog
@@ -113,17 +95,26 @@
             app:argType="az.movie.az_movie.model.moviesDataModel.Seasons" />
         <action
             android:id="@+id/action_seriesBottomSheet_to_playerFragment"
-            app:destination="@id/playerFragment" />
+            app:destination="@id/navigationPlayer" />
     </dialog>
 
     <fragment
-        android:id="@+id/playerFragment"
+        android:id="@+id/navigationPlayer"
         android:name="az.movie.az_movie.ui.fragment.player.PlayerFragment"
         android:label="PlayerFragment"
         tools:layout="@layout/fragment_player">
         <argument
             android:name="url"
             app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigationSearchMovie"
+        android:name="az.movie.az_movie.ui.fragment.search.SearchMovieFragment"
+        android:label="SearchMovieFragment" >
+        <action
+            android:id="@+id/action_searchMovieFragment_to_navigationMovie"
+            app:destination="@id/navigationMovie" />
     </fragment>
 
 </navigation>

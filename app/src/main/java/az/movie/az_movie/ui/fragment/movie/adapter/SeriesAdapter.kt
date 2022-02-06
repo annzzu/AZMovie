@@ -1,16 +1,13 @@
 package az.movie.az_movie.ui.fragment.movie.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.*
 import az.movie.az_movie.databinding.ItemPlayerBinding
 import az.movie.az_movie.extensions.setImageUrl
 import az.movie.az_movie.extensions.visible
 import az.movie.az_movie.model.playerDataModel.EpisodePlayer
 import az.movie.az_movie.ui.base.ClickCallBack
-import az.movie.az_movie.ui.fragment.movie.bottom_sheet.MovieBottomSheetDirections
 
 class SeriesAdapter :
     ListAdapter<EpisodePlayer , SeriesAdapter.ViewHolder>(DiffCallback()) {

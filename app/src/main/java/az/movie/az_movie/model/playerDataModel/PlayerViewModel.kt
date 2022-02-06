@@ -2,9 +2,7 @@ package az.movie.az_movie.model.playerDataModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import az.movie.az_movie.data.repository.movie.MovieRepositoryImpl
 import az.movie.az_movie.data.repository.player.PlayerRepositoryImpl
-import az.movie.az_movie.model.moviesDataModel.ItemMovie
 import az.movie.az_movie.util.response_handler.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow

@@ -15,11 +15,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import az.movie.az_movie.extensions.invisible
 import az.movie.az_movie.extensions.visible
-import az.movie.az_movie.model.trailerDataModel.Trailer
 import az.movie.az_movie.ui.base.BaseFragment
-import az.movie.az_movie.ui.fragment.intro.IntroSlideFragment
-import az.movie.az_movie.ui.fragment.intro.ZoomOutPageTransformer
 import az.movie.az_movie.ui.fragment.trailer.TrailerAdapter
+import az.movie.az_movie.util.animations.ZoomOutPageTransformer
 import az.movie.az_movie.util.response_handler.Resource
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,6 +40,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
     override fun listener() {
         binding.btnRetry.setOnClickListener {
             observeTrailersData()
+        }
+        binding.btnSearch.setOnClickListener {
+            openSearch()
         }
     }
 
@@ -189,6 +190,14 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
         findNavController().navigate(
             MainFragmentDirections.actionNavigationMainToNavigationMovie(
                 movieId
+            )
+        )
+    }
+
+    private fun openSearch() {
+        findNavController().navigate(
+            MainFragmentDirections.actionNavigationMainToSearchMovieFragment(
+
             )
         )
     }

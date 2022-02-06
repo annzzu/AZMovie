@@ -1,6 +1,6 @@
 package az.movie.az_movie.model.playerDataModel
 
-import az.movie.az_movie.util.QualityType
+import az.movie.az_movie.model.enums.QualityType
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 

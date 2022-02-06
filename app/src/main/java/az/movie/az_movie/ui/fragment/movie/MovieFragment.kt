@@ -13,7 +13,7 @@ import az.movie.az_movie.model.moviesDataModel.Seasons
 import az.movie.az_movie.ui.base.BaseFragment
 import az.movie.az_movie.ui.fragment.movie.adapter.GenreAdapter
 import az.movie.az_movie.ui.fragment.movie.adapter.PersonAdapter
-import az.movie.az_movie.util.LangType
+import az.movie.az_movie.model.enums.LangType
 import az.movie.az_movie.util.response_handler.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -95,13 +95,13 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::i
         } ?: run {
             rvGenres.invisible()
         }
-        movie.actors.data?.let {
+        movie.actors?.data?.let {
             actorAdapter.submitList(it)
             rvActors.startLayoutAnimation()
         } ?: run {
             lActors.invisible()
         }
-        movie.directors.data?.let {
+        movie.directors?.data?.let {
             directorAdapter.submitList(it)
             rvDirectors.startLayoutAnimation()
         } ?: run {
@@ -127,7 +127,7 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::i
     }
 
     private fun setPlot(movie:Movie) = with(binding){
-        if (movie.plots?.data?.isNotEmpty() == true) {
+        if (movie.plots?.data?.isNotEmpty() == true && movie.plots.data.isNotEmpty()) {
             movie.plots.data.let { plots ->
                 tvDescriptionText.text = plots[0].description
                 anyPlots(plots , LangType.GEO)?.let {

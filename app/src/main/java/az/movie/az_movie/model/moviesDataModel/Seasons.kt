@@ -9,11 +9,11 @@ data class Seasons(
 ) : Parcelable {
 
     fun clickSeason(seasonNumber: Int) {
-        data?.findLast { season -> season.number == seasonNumber }?.choose = true
-        data?.findLast { season -> season.number != seasonNumber }?.choose = false
+        data?.forEach { season -> season.choose = season.number == seasonNumber }
     }
 
-    fun findChosen() = data?.indexOfLast { season -> season.choose }
-    fun findChosenNum() = data?.findLast { season -> season.choose }?.number
+    fun lastIndex() = data?.indexOfLast { season -> season.choose }
+
+    fun lastNum() = data?.findLast { season -> season.choose }?.number
 
 }

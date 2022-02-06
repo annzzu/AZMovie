@@ -15,5 +15,4 @@ interface PlayerApiService {
         @Path("season") season: Int ,
     ): Response<PlayerData>
 
-
 }

@@ -64,9 +64,10 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
         stop()
     }
 
-    open fun stop() {}
+    open fun stop() {
+        _binding = null
+    }
 }

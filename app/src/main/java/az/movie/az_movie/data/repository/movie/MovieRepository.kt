@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 
 
-
 interface MovieRepository {
 
     suspend fun getMovies(page: Int , isMovie: Boolean): Resource<MovieData>

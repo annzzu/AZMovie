@@ -5,7 +5,6 @@ import javax.inject.Inject
 
 class TrailerDataSource @Inject constructor(private val api: TrailersApiService) {
 
-
     suspend fun getTrailersData() = api.getTrailersData()
 
 }

@@ -1,7 +1,5 @@
 package az.movie.az_movie.extensions
 
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
 import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -29,23 +27,12 @@ fun View.visible() = View.VISIBLE.also { visibility = it }
 
 fun View.gone() = View.GONE.also { visibility = it }
 
-fun View.getRotationAnimation(): ObjectAnimator {
-    val iconAnimator =
-        ObjectAnimator.ofFloat(this , View.ROTATION , -360f , 0f)
-    iconAnimator.start()
-    iconAnimator.duration = 1600
-    iconAnimator.repeatCount = ValueAnimator.INFINITE
-    return iconAnimator
-}
-
 fun ImageView.setImageUrl(url: String?) {
     if (!url.isNullOrEmpty())
         Glide.with(context).load(url).placeholder(DRAWABLES.ic_popcorn).into(this)
     else
         setImageResource(DRAWABLES.ic_popcorn)
 }
-
-
 
 // typealias
 typealias STRINGS = R.string

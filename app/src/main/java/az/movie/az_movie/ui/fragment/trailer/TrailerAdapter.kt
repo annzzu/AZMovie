@@ -3,13 +3,10 @@ package az.movie.az_movie.ui.fragment.trailer
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import az.movie.az_movie.data.remote.datasources.trailer.TrailerDataSource
 import az.movie.az_movie.databinding.ItemTrailerLayoutBinding
 import az.movie.az_movie.extensions.setImageUrl
 import az.movie.az_movie.model.trailerDataModel.Trailer
-import az.movie.az_movie.ui.base.ClickCallBack
-
-typealias ClickIntCallBack = (int: Int) -> Unit
+import az.movie.az_movie.util.typealiases.ClickIntCallBack
 
 class TrailerAdapter() : RecyclerView.Adapter<TrailerAdapter.ViewHolder>() {
 

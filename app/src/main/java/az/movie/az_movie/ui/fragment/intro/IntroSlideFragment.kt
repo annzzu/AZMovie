@@ -9,7 +9,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import az.movie.az_movie.databinding.FragmentIntroSlideBinding
 import az.movie.az_movie.extensions.DRAWABLES
+import az.movie.az_movie.model.introModel.IntroSlide
 import az.movie.az_movie.ui.base.BaseFragment
+import az.movie.az_movie.util.animations.ZoomOutPageTransformer
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

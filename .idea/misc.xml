@@ -37,7 +37,7 @@
         <entry key="app/src/main/res/layout/fragment_movies_full_data.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/fragment_network.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/fragment_player.xml" value="0.35520833333333335" />
-        <entry key="app/src/main/res/layout/fragment_search_movie.xml" value="0.27395833333333336" />
+        <entry key="app/src/main/res/layout/fragment_search_movie.xml" value="0.19730010384215993" />
         <entry key="app/src/main/res/layout/fragment_series_bottom_sheet.xml" value="0.3541666666666667" />
         <entry key="app/src/main/res/layout/fragment_series_bottom_sheet1.xml" value="0.203125" />
         <entry key="app/src/main/res/layout/item_episode_lang.xml" value="0.19739583333333333" />
@@ -47,6 +47,7 @@
         <entry key="app/src/main/res/layout/item_person.xml" value="0.196875" />
         <entry key="app/src/main/res/layout/item_player.xml" value="0.3993677555321391" />
         <entry key="app/src/main/res/layout/item_season.xml" value="0.203125" />
+        <entry key="app/src/main/res/layout/item_season_choosen.xml" value="0.18645833333333334" />
         <entry key="app/src/main/res/layout/item_trailer_binding.xml" value="0.27395833333333336" />
         <entry key="app/src/main/res/layout/item_trailer_layout.xml" value="0.35520833333333335" />
         <entry key="app/src/main/res/layout/layout_loading.xml" value="0.19375" />

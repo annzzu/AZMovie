@@ -1,16 +1,14 @@
 package az.movie.az_movie.ui.fragment.movies
 
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ListAdapter
 import az.movie.az_movie.databinding.ItemMovieBinding
 import az.movie.az_movie.extensions.setImageUrl
 import az.movie.az_movie.model.moviesDataModel.Movie
-import az.movie.az_movie.ui.fragment.trailer.ClickIntCallBack
+import az.movie.az_movie.util.typealiases.ClickIntCallBack
 
 
 class MoviesTopAdapter : ListAdapter<Movie , MoviesTopAdapter.ViewHolder>(DiffCallback()) {

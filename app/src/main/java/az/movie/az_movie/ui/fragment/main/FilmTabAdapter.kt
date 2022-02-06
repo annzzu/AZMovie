@@ -1,13 +1,9 @@
 package az.movie.az_movie.ui.fragment.main
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import az.movie.az_movie.ui.fragment.intro.IntroSlideFragment
 import az.movie.az_movie.ui.fragment.movies.MoviesFragment
-import az.movie.az_movie.ui.fragment.network.NetworkFragment
-import az.movie.az_movie.ui.fragment.trailer.ClickIntCallBack
+import az.movie.az_movie.util.typealiases.ClickIntCallBack
 
 
 class FilmTabAdapter(fragment: Fragment) :

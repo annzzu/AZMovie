@@ -1,13 +1,8 @@
 package az.movie.az_movie.ui
 
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
+import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.util.Log.d
-import android.view.View
-import android.view.animation.AnticipateInterpolator
 import androidx.activity.viewModels
-import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -84,25 +79,8 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
     private fun initSplashScreen() {
         val splashScreen = installSplashScreen()
         splashScreen.setOnExitAnimationListener { splashScreenView ->
-
-            val iconAnimator =
-                ObjectAnimator.ofFloat(splashScreenView.iconView , View.ROTATION , -360f , 0f)
-            iconAnimator.apply {
-                duration = 600L
-                start()
-            }
-            val splashScreenAnimator = ObjectAnimator.ofFloat(
-                splashScreenView.view ,
-                View.TRANSLATION_Y ,
-                0f ,
-                splashScreenView.view.height.toFloat()
-            )
-            splashScreenAnimator.apply {
-                interpolator = AnticipateInterpolator()
-                duration = 600L
-                doOnEnd { splashScreenView.remove() }
-                start()
-            }
+            splashScreenView.iconView.getSplashIconRotationAnimation()
+            splashScreenView.getSplashViewRotationAnimation()
         }
     }
 
@@ -121,9 +99,14 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
         arguments: Bundle?
     ) {
         when (destination.id) {
-            IDS.navigationMovie , IDS.navigationSearchMovie -> goBack()
+            IDS.navigationSearchMovie, IDS.navigationMovie -> {
+                goBack()
+                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            }
+            IDS.navigationPlayer ->
+                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
             else -> {
-                binding.btnBack.invisible()
+                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
             }
         }
     }
@@ -132,10 +115,14 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
         binding.btnBack.apply {
             visible()
             setOnClickListener {
-                navigationWithMotion(IDS.navigationMain)
+                navController.popBackStack(IDS.navigationMain, true)
                 binding.btnBack.invisible()
             }
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
     override fun onBackPressed() {

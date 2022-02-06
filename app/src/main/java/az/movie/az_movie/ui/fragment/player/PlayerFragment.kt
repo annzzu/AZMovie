@@ -29,8 +29,7 @@ class PlayerFragment : BaseFragment<FragmentPlayerBinding>(FragmentPlayerBinding
     private fun initPlayer() {
         player = SimpleExoPlayer.Builder(requireContext()).build().also {
             binding.exoPlayer.player = it
-            val mediaItem =
-                MediaItem.fromUri(args.url)
+            val mediaItem = MediaItem.fromUri(args.url)
             it.setMediaItem(mediaItem)
         }
     }

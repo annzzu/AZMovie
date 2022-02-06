@@ -1,13 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.search.SearchMovieFragment">
+    android:background="@color/green_b">
 
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/etilSearch"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/font_regular"
+        android:hint="@string/search"
+        android:textColor="@color/green_d"
+        android:textColorHint="@color/green_d"
+        app:boxStrokeColor="@color/green_dd"
+        app:hintTextColor="@color/green_d"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/ic_search"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/orange_l"
+        app:startIconTint="@color/orange_l"
+        app:startIconContentDescription="@string/search">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/pbMovies"
+        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="something" />
-</androidx.core.widget.NestedScrollView>
+        android:layout_gravity="center"
+        android:backgroundTint="@color/orange_l"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/imMovie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etilSearch" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imMovie"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:tint="@color/orange_l"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvNothingFound"
+        app:layout_constraintStart_toStartOf="@+id/tvNothingFound"
+        app:layout_constraintTop_toBottomOf="@+id/etilSearch"
+        app:layout_constraintWidth_percent=".4"
+        app:srcCompat="@drawable/ic_popcorn" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNothingFound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/font_regular"
+        android:text="@string/nothing_found"
+        android:textColor="@color/reply_blue_800"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/imMovie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pbMovies" />
+
+    <ScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        android:fillViewport="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etilSearch">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMovies"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layoutAnimation="@anim/item_rv_anim"
+            tools:listitem="@layout/item_movie" />
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
