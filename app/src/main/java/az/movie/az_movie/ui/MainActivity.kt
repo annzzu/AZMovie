@@ -61,7 +61,6 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
                     navigationWithMotion(IDS.navigationNetwork)
                 } else {
                     if (currentNavigationFragment is NetworkFragment) {
-                        binding.btnBack.visible()
                         supportFragmentManager.popBackStackImmediate()
                     }
                 }
