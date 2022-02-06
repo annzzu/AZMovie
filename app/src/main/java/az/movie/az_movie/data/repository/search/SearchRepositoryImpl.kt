@@ -18,7 +18,7 @@ class SearchRepositoryImpl @Inject constructor(private val dataSource: SearchDat
     override suspend fun getSearch(keywords: String): Flow<Resource<MovieData>> {
         return flow {
             emit(Resource.Loading())
-            delay(1000)
+            delay(500)
             emit(handleResponse { dataSource.getSearch(keywords) })
         }.debounce(1000).flowOn(Dispatchers.IO)
     }
