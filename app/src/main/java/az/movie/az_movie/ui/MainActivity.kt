@@ -7,7 +7,6 @@ import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.*
 import az.movie.az_movie.databinding.ActivityMainBinding
@@ -16,7 +15,6 @@ import az.movie.az_movie.ui.base.BaseActivity
 import az.movie.az_movie.ui.fragment.network.NetworkFragment
 import az.movie.az_movie.util.network.NetworkStatus
 import az.movie.az_movie.ui.fragment.network.NetworkViewModel
-import az.movie.az_movie.ui.fragment.player.TAG
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -120,7 +118,9 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
     private fun goBack() {
         binding.btnBack.apply {
             visible()
+
             setOnClickListener {
+                getFabIconAnimation()
                 supportFragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
                 navigationWithMotion(IDS.navigationMain)
                 binding.btnBack.invisible()

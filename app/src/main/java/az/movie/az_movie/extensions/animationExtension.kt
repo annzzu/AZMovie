@@ -64,6 +64,17 @@ fun View.getZoomAnimation(): ObjectAnimator {
     return animator
 }
 
+fun View.getFabIconAnimation(): ObjectAnimator {
+    val animator =
+        ObjectAnimator.ofFloat(this , View.TRANSLATION_X , 100f , 0f)
+    animator.apply {
+        start()
+        animator.duration = 200
+        animator.repeatCount = ValueAnimator.RESTART
+    }
+    return animator
+}
+
 fun View.transformPage(position: Float) {
     this.apply {
         val pageWidth = width
