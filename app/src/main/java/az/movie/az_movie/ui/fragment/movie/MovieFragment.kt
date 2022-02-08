@@ -13,7 +13,7 @@ import az.movie.az_movie.domain.model.moviesDataModel.Seasons
 import az.movie.az_movie.ui.base.BaseFragment
 import az.movie.az_movie.ui.fragment.movie.adapter.GenreAdapter
 import az.movie.az_movie.ui.fragment.movie.adapter.PersonAdapter
-import az.movie.az_movie.domain.enums.LangType
+import az.movie.az_movie.util.enums.LangType
 import az.movie.az_movie.domain.response_handler.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest

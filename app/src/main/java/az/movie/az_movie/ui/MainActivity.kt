@@ -1,8 +1,8 @@
 package az.movie.az_movie.ui
 
+import android.app.AlarmManager
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.util.Log.d
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
@@ -20,6 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.util.*
 
 
 @AndroidEntryPoint
@@ -153,4 +154,5 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
         super.finish()
         ActivityNavigator.applyPopAnimationsToPendingTransition(this)
     }
+
 }

@@ -1,7 +1,7 @@
 package az.movie.az_movie.data.remote.datasources.movie
 
 import az.movie.az_movie.data.remote.services.movie.MovieApiService
-import az.movie.az_movie.domain.enums.MovieType
+import az.movie.az_movie.util.enums.MovieType
 import javax.inject.Inject
 
 class MovieDataSource @Inject constructor(private val api: MovieApiService) {
