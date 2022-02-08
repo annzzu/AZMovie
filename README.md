@@ -35,37 +35,52 @@ I have no right over the api itself and I do not guarantee that the material tha
     * [Kodein](https://docs.kodein.org/) - dependency injection
     * [Glide](https://github.com/bumptech/glide) - image loading library
     * [Lottie](http://airbnb.io/lottie) - animation library
+    * [Lottie](http://airbnb.io/lottie) - animation library
 
 * Modern Architecture
     * Clean Architecture (at feature module level)
     * Single activity architecture using [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)
     * MVVM  (presentation layer)
     * [Dynamic feature modules](https://developer.android.com/studio/projects/dynamic-delivery)
-    * [Android Architecture components](https://developer.android.com/topic/libraries/architecture) ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel), [LiveData](https://developer.android.com/topic/libraries/architecture/livedata), [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation))
-    * [Android KTX](https://developer.android.com/kotlin/ktx) - Jetpack Kotlin extensions
+    * [Android Architecture components](https://developer.android.com/topic/libraries/architecture) ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel), 
+    * [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation))
+    * [Exoplayer](https://developer.android.com/guide/topics/media/exoplayer) - for streaming films
+
 * UI
     * [Material design](https://material.io/design)
-    * [Exoplayer] (https://developer.android.com/guide/topics/media/exoplayer)
+    * [Exoplayer](https://developer.android.com/guide/topics/media/exoplayer)
 * Gradle
     * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
     * Custom tasks
     * Plugins ([SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args),
-    [android-junit5](https://github.com/mannodermaus/android-junit5))
+      [android-junit5](https://github.com/mannodermaus/android-junit5))
     * [Dependency locks](https://docs.gradle.org/current/userguide/dependency_locking.html)
     * [Versions catalog](https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html)
 
 
 
 
+## Movie Subtitles -> 
+
+![Movie Subtitle Demo](screenshots/movie_subtitle.gif "Movie Subtitle")
+<!-- 
+![Home Page](screenshots/home_page.jpg "Home Page for Top films and Series also Trailers -> Search button")
+![Movie Page](screenshots/movie_buttom_sheet_shot.png "Movie Page with its details and buttom sheet for start stream the language you choose)
+![Series Buttom Sheet](screenshots/rick&morty3.jpg "Series buttom sheet to choose season and then serie ")
 
 
+![Home Page](screenshots/home_page.jpg "Home Page for Top films and Series also Trailers -> Search button")
+![Movie Page](screenshots/movie_buttom_sheet_shot.png "Movie Page with its details and buttom sheet for start stream the language you choose)
+![Series Buttom Sheet](screenshots/rick&morty3.jpg "Series buttom sheet to choose season and then serie ")
+![Search](screenshots/search_shrek.jpg "Series buttom sheet to choose season and then serie ") -->
 
-
-
-
-
-
-
+<div>
+   <img src="screenshots/home_page.jpg" width="240" >
+   <img src="screenshots/movie_bottom_sheet_shot.jpg" width="240" >
+   <img src="screenshots/rick&morty3.jpg" width="240" >
+   <img src="screenshots/search_shrek.jpg" width="240">
+ </div>
+   
 ## Getting started
 
 There are a few ways to open this project.
@@ -79,6 +94,12 @@ There are a few ways to open this project.
 
 1. Run `git clone https://github.com/annzzu/AZMovie.git` command to clone project
 2. Open `Android Studio` and select `File | Open...` from the menu. Select cloned directory and press `Open` button
+
+
+`gradle.properties App API`
+```gradle.properties
+SERVER_URL=https://api.adjaranet.com/api/v1/
+```
 
 ## Inspiration
 
