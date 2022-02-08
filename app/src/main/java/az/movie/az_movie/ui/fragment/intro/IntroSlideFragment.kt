@@ -116,17 +116,17 @@ class IntroSlideFragment : BaseFragment<FragmentIntroSlideBinding>(
             listOf(
                 IntroSlide(
                     "AZ\nMovie" ,
-                    "For Your Fun" ,
+                    "For Enjoyable Moments" ,
                     DRAWABLES.ic_camera
                 ) ,
                 IntroSlide(
                     "AZ\nMovie" ,
-                    "For Your Fun" ,
+                    "For Your Comfort" ,
                     DRAWABLES.ic_film
                 ) ,
                 IntroSlide(
                     "AZ\nMovie" ,
-                    "For Your Fun" ,
+                    "For Your Time" ,
                     DRAWABLES.ic_popcorn
                 )
             )
