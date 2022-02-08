@@ -63,24 +63,19 @@ I have no right over the api itself and I do not guarantee that the material tha
 ## Movie Subtitles -> 
 
 ![Movie Subtitle Demo](screenshots/movie_subtitle.gif "Movie Subtitle")
-<!-- 
-![Home Page](screenshots/home_page.jpg "Home Page for Top films and Series also Trailers -> Search button")
-![Movie Page](screenshots/movie_buttom_sheet_shot.png "Movie Page with its details and buttom sheet for start stream the language you choose)
-![Series Buttom Sheet](screenshots/rick&morty3.jpg "Series buttom sheet to choose season and then serie ")
-
-
-![Home Page](screenshots/home_page.jpg "Home Page for Top films and Series also Trailers -> Search button")
-![Movie Page](screenshots/movie_buttom_sheet_shot.png "Movie Page with its details and buttom sheet for start stream the language you choose)
-![Series Buttom Sheet](screenshots/rick&morty3.jpg "Series buttom sheet to choose season and then serie ")
-![Search](screenshots/search_shrek.jpg "Series buttom sheet to choose season and then serie ") -->
 
 <div>
-   <img src="screenshots/home_page.jpg" width="240" >
-   <img src="screenshots/movie_bottom_sheet_shot.jpg" width="240" >
-   <img src="screenshots/rick&morty3.jpg" width="240" >
-   <img src="screenshots/search_shrek.jpg" width="240">
+   <img src="screenshots/home_page.jpg" width="230" >
+   <img src="screenshots/movie_bottom_sheet_shot.jpg" width="230" >
+   <img src="screenshots/rick&morty3.jpg" width="230" >
+   <img src="screenshots/search_shrek.jpg" width="230">
  </div>
-   
+
+* Home Page for Top films and Series also Trailers -> Search button
+* Movie Page with its details and buttom sheet for start stream the language you choose
+* Series buttom sheet to choose season and then serie 
+* Search page for searching series and movies
+
 ## Getting started
 
 There are a few ways to open this project.
@@ -96,7 +91,7 @@ There are a few ways to open this project.
 2. Open `Android Studio` and select `File | Open...` from the menu. Select cloned directory and press `Open` button
 
 
-`gradle.properties App API`
+`API`
 ```gradle.properties
 SERVER_URL=https://api.adjaranet.com/api/v1/
 ```
