@@ -52,7 +52,7 @@ class SeriesBottomSheet :
                 with(binding) {
                     when (movie) {
                         is Resource.Error -> {
-                            tvSeason.text = getString(STRINGS.error)
+                            tvSeries.text = getString(STRINGS.error)
                             pbMovie.invisible()
                         }
                         is Resource.Loading -> {
@@ -62,6 +62,7 @@ class SeriesBottomSheet :
                         is Resource.Success -> {
                             pbMovie.invisible()
                             movie.data?.let { episodes ->
+                                tvSeries.text = getString(STRINGS.series)
                                 if (episodes.data != null && episodes.data.isNotEmpty()) {
                                     binding.rvSeries.visible()
                                     binding.tvSeries.visible()

@@ -44,7 +44,6 @@ class MovieRepositoryImpl @Inject constructor(private val dataSource: MovieDataS
 
     override fun getMovie(movieId: Int): Flow<Resource<ItemMovie>> {
         return flow {
-            emit(Resource.Loading())
             emit(handleResponse { dataSource.getMovie(movieId) })
         }.flowOn(Dispatchers.IO)
     }

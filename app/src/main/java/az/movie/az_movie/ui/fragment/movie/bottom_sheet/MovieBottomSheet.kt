@@ -57,6 +57,7 @@ class MovieBottomSheet :
                         }
                         is Resource.Success -> {
                             pbMovie.invisible()
+                            tvMovie.text = getString(STRINGS.movie)
                             movie.data?.firstEpisode?.let { movie ->
                                 tvMovie.text = getString(STRINGS.movies)
                                 setData(movie)
