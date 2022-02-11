@@ -31,11 +31,8 @@ class TrailerAdapter() : RecyclerView.Adapter<TrailerAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemTrailerLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(model: Trailer) = with(binding) {
-            tvTitle.text = model.secondaryName ?: model.primaryName ?: model.originalName
-            icon.setImageUrl(
-                model.covers?.data?.size1920 ?: model.covers?.data?.size1050
-                ?: model.posters?.data?.size240
-            )
+            tvTitle.text = model.title
+            icon.setImageUrl(model.cover)
             root.setOnClickListener {
                 clickIntCallBack?.invoke(model.id)
             }

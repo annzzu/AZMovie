@@ -2,13 +2,16 @@ package az.movie.az_movie.ui.fragment.player
 
 import android.annotation.SuppressLint
 import android.net.Uri
+import android.os.Bundle
 import android.util.Log
 import android.util.Log.d
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import az.movie.az_movie.databinding.FragmentPlayerBinding
 import az.movie.az_movie.extensions.STRINGS
 import az.movie.az_movie.ui.base.BaseFragment
+import az.movie.az_movie.ui.fragment.movie.MovieViewModel
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
@@ -20,10 +23,10 @@ import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.util.MimeTypes
 
 
-//@AndroidEntryPoint
 class PlayerFragment : BaseFragment<FragmentPlayerBinding>(FragmentPlayerBinding::inflate) {
 
     private val args: PlayerFragmentArgs by navArgs()
+    private val playerViewModel: PlayerViewModel by viewModels()
 
     private val playbackStateListener: Player.Listener = playbackStateListener()
     private var player: ExoPlayer? = null
@@ -41,7 +44,7 @@ class PlayerFragment : BaseFragment<FragmentPlayerBinding>(FragmentPlayerBinding
                     ImmutableList.of(
                         SubtitleConfiguration.Builder(Uri.parse(args.subtitle))
                             .setMimeType(MimeTypes.TEXT_VTT)
-                            .setLanguage(getString(STRINGS.string))
+                            .setLanguage(getString(STRINGS.subtitle))
                             .build()
                     )
                 ).build()
@@ -53,7 +56,7 @@ class PlayerFragment : BaseFragment<FragmentPlayerBinding>(FragmentPlayerBinding
                 setMediaItem(mediaItem)
                 prepare()
                 playWhenReady = playWhenReadyBoolean
-                seekTo(currentWindow , playbackPosition)
+                seekTo(currentWindow , playerViewModel.playerCurrentPositionL)
                 addListener(playbackStateListener)
             }
         }
@@ -81,6 +84,7 @@ class PlayerFragment : BaseFragment<FragmentPlayerBinding>(FragmentPlayerBinding
     }
 
     override fun onStop() {
+        playerViewModel.playerCurrentPositionL = player?.currentPosition ?: 0L
         super.onStop()
         if (Util.SDK_INT > 23) {
             releasePlayer()
@@ -89,7 +93,7 @@ class PlayerFragment : BaseFragment<FragmentPlayerBinding>(FragmentPlayerBinding
 
     private fun releasePlayer() {
         player?.run {
-            playbackPosition = this.currentPosition
+            playbackPosition = playerViewModel.playerCurrentPositionL
             currentWindow = this.currentMediaItemIndex
             playWhenReady = this.playWhenReady
             removeListener(playbackStateListener)

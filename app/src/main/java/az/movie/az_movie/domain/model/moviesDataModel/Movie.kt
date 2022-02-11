@@ -1,5 +1,7 @@
 package az.movie.az_movie.domain.model.moviesDataModel
 
+import az.movie.az_movie.extensions.invisible
+import az.movie.az_movie.util.enums.LangType
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
@@ -50,6 +52,34 @@ data class Movie(
     val trailer: String?
         get() {
             return trailers?.data?.get(0)?.fileUrl
+        }
+
+    fun plot(lang: LangType): String? {
+        return if (plots?.data?.isNotEmpty() == true && plots.data.isNotEmpty()) {
+            anyPlots(lang)?.let { return filterPlots(lang) } ?: run { return null }
+        } else {
+            null
+        }
+    }
+
+    val plotFirst: String?
+        get() {
+            return if (plots?.data?.isNotEmpty() == true && plots.data.isNotEmpty()) {
+                plots.data[0].description
+            } else {
+                null
+            }
+        }
+
+    private fun anyPlots(lang: LangType) =
+        if (plots?.data?.any { plot -> plot.language == lang.name } == true) {
+            true
+        } else null
+
+
+    private fun filterPlots(lang: LangType): String? =
+        plots?.data?.filter { plot -> plot.language == lang.name }?.let {
+            return it[0].description
         }
 
 }

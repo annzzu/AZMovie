@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import az.movie.az_movie.databinding.FragmentMovieBinding
 import az.movie.az_movie.extensions.*
 import az.movie.az_movie.domain.model.moviesDataModel.Movie
-import az.movie.az_movie.domain.model.moviesDataModel.Plots
 import az.movie.az_movie.domain.model.moviesDataModel.Seasons
 import az.movie.az_movie.ui.base.BaseFragment
 import az.movie.az_movie.ui.fragment.movie.adapter.GenreAdapter
@@ -127,30 +126,28 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::i
     }
 
     private fun setPlot(movie:Movie) = with(binding){
-        if (movie.plots?.data?.isNotEmpty() == true && movie.plots.data.isNotEmpty()) {
-            movie.plots.data.let { plots ->
-                tvDescriptionText.text = plots[0].description
-                anyPlots(plots , LangType.GEO)?.let {
-                    btnGeo.setOnClickListener {
-                        tvDescriptionText.text = filterPlots(plots , LangType.GEO)
-                    }
-                } ?: run {
-                    btnGeo.invisible()
+        if (!movie.plotFirst.isNullOrBlank()) {
+            tvDescriptionText.text = movie.plotFirst
+            movie.plot(LangType.GEO)?.let { plot->
+                btnGeo.setOnClickListener {
+                    tvDescriptionText.text = plot
                 }
-                anyPlots(plots , LangType.ENG)?.let {
-                    btnEng.setOnClickListener {
-                        tvDescriptionText.text = filterPlots(plots , LangType.ENG)
-                    }
-                } ?: run {
-                    btnEng.invisible()
+            } ?: run {
+                btnGeo.invisible()
+            }
+            movie.plot(LangType.ENG)?.let { plot->
+                btnEng.setOnClickListener {
+                    tvDescriptionText.text = plot
                 }
-                anyPlots(plots , LangType.RUS)?.let {
-                    btnRus.setOnClickListener {
-                        tvDescriptionText.text = filterPlots(plots , LangType.RUS)
-                    }
-                } ?: run {
-                    btnRus.invisible()
+            } ?: run {
+                btnEng.invisible()
+            }
+            movie.plot(LangType.RUS)?.let { plot->
+                btnRus.setOnClickListener {
+                    tvDescriptionText.text = plot
                 }
+            } ?: run {
+                btnRus.invisible()
             }
         }
     }
@@ -171,11 +168,4 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::i
         )
     }
 
-    private fun filterPlots(plots: List<Plots.Data> , lang: LangType) =
-        plots.filter { plot -> plot.language == lang.name }[0].description
-
-    private fun anyPlots(plots: List<Plots.Data> , lang: LangType) =
-        if (plots.any { plot -> plot.language == lang.name })
-            plots.any { plot -> plot.language == lang.name }
-        else null
 }

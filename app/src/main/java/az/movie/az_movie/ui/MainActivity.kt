@@ -1,6 +1,5 @@
 package az.movie.az_movie.ui
 
-import android.app.AlarmManager
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -119,7 +118,6 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
     private fun goBack() {
         binding.btnBack.apply {
             visible()
-
             setOnClickListener {
                 getFabIconAnimation()
                 supportFragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
