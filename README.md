@@ -8,26 +8,50 @@
 ![GMAIL](https://img.shields.io/badge/Gmail-anaz.zurabashvili@gmail.com-blue.svg?style=flat)
 
 I have no right over the api itself and I do not guarantee that the material that will be present in this repository will be up-to-date and precise.
+# Introduction
+###
+> AZMovie is a small android app for watching movies and series without any ads.
 
-##  _AZMovie is Android Small App for watching movies and series without any ads_ AZMOVIE allows users to do the following
+<img width="190" align="right"  src="screenshots/demo.gif"/>
 
 
-
-<img src="screenshots/demo.gif" width="336" align="right" hspace="20">
-
-### AZMOVIE allows users to do the following
+#### AZMOVIE allows users to do the following
 
 1. View popular, now playing, upcoming and top rated movies ans series.
 2. View Individual movies and get the movie data such as cast, movie duration, summary and description.
 3. Search for Movies and Series.
 4. Watch Movies And Series with subtitles.
+5. See top weekly movies and series.
+
+
+#### Introduction to the user
+
+* Home Page for Top films and Series also Trailers -> Search button
+* Movie Page with its details and buttom sheet for start stream the language you choose
+* Series buttom sheet to choose season and then serie 
+* Search page for searching series and movies
+* Top weekly Movies and Series page
+
+
+### Screenshots
+###
+Home Page | Movie Page | Movies Choose | Series Choose | Search Movies and Series
+---|---|---|---|---
+<img src="screenshots/home_page.jpg"  width="200" alt="018"/> | <img src="screenshots/movie_bottom_sheet_shot.jpg"  width="200" alt="018" />  | <img src="screenshots/movie_bottom_sheet_shot.jpg"  width="200" alt="018" />| <img src="screenshots/rick&morty3.jpg" width="200" alt="018"  /> |  <img src="screenshots/search_shrek.jpg" width="200" alt="018">
+   
+   
+## Movie Subtitles -> 
+
+![Movie Subtitle Demo](screenshots/movie_subtitle.gif "Movie Subtitle")
+
 
 
 
 ## Project characteristics and tech-stack
 * Tech-stack
     * [100% Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - perform background operations
-    * [Retrofit](https://square.github.io/retrofit/) - networking
+    * [Dagger2](https://github.com/google/dagger) - Dependency Injection lib with large community support.
+    * [Retrofit](https://square.github.io/retrofit/) - Network Http Client
     * [Jetpack](https://developer.android.com/jetpack)
         * [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - in-app navigation
         * [Flow](https://developer.android.com/kotlin/flow) 
@@ -35,8 +59,8 @@ I have no right over the api itself and I do not guarantee that the material tha
     * [Kodein](https://docs.kodein.org/) - dependency injection
     * [Glide](https://github.com/bumptech/glide) - image loading library
     * [Lottie](http://airbnb.io/lottie) - animation library
-    * [Lottie](http://airbnb.io/lottie) - animation library
-
+    * [okhttp-logging-interceptor](https://github.com/square/okhttp/blob/master/okhttp-logging-interceptor/README.md) - logs HTTP request and response data.
+    * [Moshi](https://github.com/square/moshi) - Data, Model & Entity JSON Parser that understands Kotlin non-nullable and default parameters
 * Modern Architecture
     * Clean Architecture (at feature module level)
     * Single activity architecture using [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)
@@ -48,33 +72,15 @@ I have no right over the api itself and I do not guarantee that the material tha
 
 * UI
     * [Material design](https://material.io/design)
-    * [Exoplayer](https://developer.android.com/guide/topics/media/exoplayer)
+    * [Exoplayer](https://developer.android.com/guide/topics/media/exoplayer) - for streaming films
 * Gradle
     * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
     * Custom tasks
     * Plugins ([SafeArgs](https://developer.android.com/guide/navigation/navigation-pass-data#Safe-args),
       [android-junit5](https://github.com/mannodermaus/android-junit5))
-    * [Dependency locks](https://docs.gradle.org/current/userguide/dependency_locking.html)
-    * [Versions catalog](https://docs.gradle.org/7.0-milestone-1/userguide/platforms.html)
 
+The full list of dependencies are written in the **build.gradle** files.
 
-
-
-## Movie Subtitles -> 
-
-![Movie Subtitle Demo](screenshots/movie_subtitle.gif "Movie Subtitle")
-
-<div>
-   <img src="screenshots/home_page.jpg" width="230" >
-   <img src="screenshots/movie_bottom_sheet_shot.jpg" width="230" >
-   <img src="screenshots/rick&morty3.jpg" width="230" >
-   <img src="screenshots/search_shrek.jpg" width="230">
- </div>
-
-* Home Page for Top films and Series also Trailers -> Search button
-* Movie Page with its details and buttom sheet for start stream the language you choose
-* Series buttom sheet to choose season and then serie 
-* Search page for searching series and movies
 
 ## Getting started
 
