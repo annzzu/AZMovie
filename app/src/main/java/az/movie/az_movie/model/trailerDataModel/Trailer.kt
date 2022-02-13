@@ -1,6 +1,6 @@
-package az.movie.az_movie.domain.model.trailerDataModel
+package az.movie.az_movie.model.trailerDataModel
 
-import az.movie.az_movie.domain.model.moviesDataModel.*
+import az.movie.az_movie.model.moviesDataModel.*
 import com.squareup.moshi.JsonClass
 
 

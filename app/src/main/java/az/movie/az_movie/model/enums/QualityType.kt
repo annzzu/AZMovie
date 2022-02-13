@@ -1,4 +1,4 @@
-package az.movie.az_movie.util.enums
+package az.movie.az_movie.model.enums
 
 enum class QualityType {
     MEDIUM , HIGH , RUS

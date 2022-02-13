@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ListAdapter
 import az.movie.az_movie.databinding.ItemMovieBinding
 import az.movie.az_movie.extensions.setImageUrl
-import az.movie.az_movie.domain.model.moviesDataModel.Movie
+import az.movie.az_movie.model.moviesDataModel.Movie
 import az.movie.az_movie.util.typealiases.ClickIntCallBack
 
 

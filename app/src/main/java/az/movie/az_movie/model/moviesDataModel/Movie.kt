@@ -1,7 +1,6 @@
-package az.movie.az_movie.domain.model.moviesDataModel
+package az.movie.az_movie.model.moviesDataModel
 
-import az.movie.az_movie.extensions.invisible
-import az.movie.az_movie.util.enums.LangType
+import az.movie.az_movie.model.enums.LangType
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)

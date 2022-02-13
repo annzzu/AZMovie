@@ -1,7 +1,7 @@
 package az.movie.az_movie.data.remote.services.movie
 
-import az.movie.az_movie.domain.model.moviesDataModel.ItemMovie
-import az.movie.az_movie.domain.model.moviesDataModel.MovieData
+import az.movie.az_movie.model.moviesDataModel.ItemMovie
+import az.movie.az_movie.model.moviesDataModel.MovieData
 import az.movie.az_movie.util.endpoints.MovieApiEndpoints
 import retrofit2.Response
 import retrofit2.http.GET

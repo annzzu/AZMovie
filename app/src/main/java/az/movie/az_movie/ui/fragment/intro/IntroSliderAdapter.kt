@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import az.movie.az_movie.databinding.FragmentNetworkBinding
-import az.movie.az_movie.domain.model.introModel.IntroSlide
+import az.movie.az_movie.model.introModel.IntroSlide
 
 class IntroSliderAdapter(private val introSlides: List<IntroSlide>) :
     RecyclerView.Adapter<IntroSliderAdapter.ViewHolder>() {

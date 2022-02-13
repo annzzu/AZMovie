@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ListAdapter
 import az.movie.az_movie.databinding.ItemGenreBinding
-import az.movie.az_movie.domain.model.moviesDataModel.Genres
+import az.movie.az_movie.model.moviesDataModel.Genres
 
 
 class GenreAdapter : ListAdapter<Genres.Data , GenreAdapter.ViewHolder>(diffCallback) {

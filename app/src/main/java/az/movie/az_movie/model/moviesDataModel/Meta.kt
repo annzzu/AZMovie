@@ -1,4 +1,4 @@
-package az.movie.az_movie.domain.model.moviesDataModel
+package az.movie.az_movie.model.moviesDataModel
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

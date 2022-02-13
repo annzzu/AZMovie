@@ -1,9 +1,9 @@
 package az.movie.az_movie.data.repository.movie
 
-import az.movie.az_movie.domain.model.moviesDataModel.ItemMovie
+import az.movie.az_movie.model.moviesDataModel.ItemMovie
 import az.movie.az_movie.data.remote.datasources.movie.MovieDataSource
-import az.movie.az_movie.domain.model.moviesDataModel.MovieData
-import az.movie.az_movie.util.enums.MovieType
+import az.movie.az_movie.model.moviesDataModel.MovieData
+import az.movie.az_movie.model.enums.MovieType
 import az.movie.az_movie.domain.response_handler.Resource
 import az.movie.az_movie.domain.response_handler.handleResponse
 import kotlinx.coroutines.Dispatchers

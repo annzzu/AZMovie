@@ -2,7 +2,7 @@ package az.movie.az_movie.ui.fragment.movie
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import az.movie.az_movie.domain.model.moviesDataModel.ItemMovie
+import az.movie.az_movie.model.moviesDataModel.ItemMovie
 import az.movie.az_movie.data.repository.movie.MovieRepositoryImpl
 import az.movie.az_movie.domain.response_handler.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

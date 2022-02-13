@@ -11,7 +11,7 @@ import az.movie.az_movie.extensions.STRINGS
 import az.movie.az_movie.extensions.invisible
 import az.movie.az_movie.extensions.setImageUrl
 import az.movie.az_movie.extensions.visible
-import az.movie.az_movie.domain.model.playerDataModel.EpisodePlayer
+import az.movie.az_movie.model.playerDataModel.EpisodePlayer
 import az.movie.az_movie.ui.fragment.movie.PlayerViewModel
 import az.movie.az_movie.ui.base.BaseBottomSheet
 import az.movie.az_movie.ui.fragment.movie.adapter.LangPlayerAdapter

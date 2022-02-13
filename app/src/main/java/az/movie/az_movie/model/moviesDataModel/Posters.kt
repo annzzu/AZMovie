@@ -1,14 +1,15 @@
-package az.movie.az_movie.domain.model.moviesDataModel
+package az.movie.az_movie.model.moviesDataModel
 
+import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Plot(
+data class Posters(
     val data: Data?
 ) {
     @JsonClass(generateAdapter = true)
     data class Data(
-        val description: String?,
-        val language: String?
+        @Json(name = "240")
+        val size240: String?,
     )
 }

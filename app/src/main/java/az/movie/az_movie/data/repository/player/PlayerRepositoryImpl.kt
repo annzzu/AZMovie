@@ -1,7 +1,7 @@
 package az.movie.az_movie.data.repository.player
 
 import az.movie.az_movie.data.remote.datasources.player.PlayerDataSource
-import az.movie.az_movie.domain.model.playerDataModel.PlayerData
+import az.movie.az_movie.model.playerDataModel.PlayerData
 import az.movie.az_movie.domain.response_handler.Resource
 import az.movie.az_movie.domain.response_handler.handleResponse
 import kotlinx.coroutines.Dispatchers

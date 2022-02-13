@@ -3,7 +3,7 @@ package az.movie.az_movie.ui.fragment.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import az.movie.az_movie.data.repository.trailer.TrailerRepositoryImpl
-import az.movie.az_movie.domain.model.trailerDataModel.TrailerData
+import az.movie.az_movie.model.trailerDataModel.TrailerData
 import az.movie.az_movie.domain.response_handler.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow

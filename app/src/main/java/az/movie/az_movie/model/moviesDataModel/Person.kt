@@ -1,4 +1,4 @@
-package az.movie.az_movie.domain.model.moviesDataModel
+package az.movie.az_movie.model.moviesDataModel
 
 
 import az.movie.az_movie.extensions.getNextLine

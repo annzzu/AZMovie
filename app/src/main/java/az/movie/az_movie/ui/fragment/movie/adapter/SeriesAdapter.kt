@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.*
 import az.movie.az_movie.databinding.ItemPlayerBinding
 import az.movie.az_movie.extensions.setImageUrl
 import az.movie.az_movie.extensions.visible
-import az.movie.az_movie.domain.model.playerDataModel.EpisodePlayer
+import az.movie.az_movie.model.playerDataModel.EpisodePlayer
 import az.movie.az_movie.ui.fragment.player.TAG
 import az.movie.az_movie.util.typealiases.ClickStringsCallBack
 

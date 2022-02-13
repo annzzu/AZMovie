@@ -1,4 +1,4 @@
-package az.movie.az_movie.domain.model.introModel
+package az.movie.az_movie.model.introModel
 
 data class IntroSlide(
     val title: String,
