@@ -25,7 +25,7 @@ interface MovieApiService {
     @GET(MovieApiEndpoints.MOVIES_TOP)
     suspend fun getMoviesTopData(
         @Query("page") page: Int = 1 ,
-        @Query("per_page") per_page: Int = 15 ,
+        @Query("per_page") per_page: Int = 20 ,
         @Query("type") type: String = "movie" ,
         @Query("period") period: String = "day" ,
         @Query("filters[with_actors]") with_actors: Int = 1 ,
@@ -34,6 +34,19 @@ interface MovieApiService {
         @Query("sort") sort: String = "-upload_date" ,
         @Query("source") source: String = "adjaranet" ,
     ): Response<MovieData>
+
+    @GET(MovieApiEndpoints.MOVIES_TOP)
+    suspend fun getMoviesPeriodTopData(
+        @Query("page") page: Int = 1 ,
+        @Query("per_page") per_page: Int = 20 ,
+        @Query("type") type: String = "movie" ,
+        @Query("period") period: String = "day" ,
+        @Query("filters[with_actors]") with_actors: Int = 1 ,
+        @Query("filters[with_directors]") with_directors: Int = 1 ,
+        @Query("filters[language]") language: String = "ENG" ,
+        @Query("sort") sort: String = "-upload_date" ,
+        @Query("source") source: String = "adjaranet" ,
+    ): MovieData
 
     @GET(MovieApiEndpoints.MOVIE_ID)
     suspend fun getMovie(

@@ -1,6 +1,7 @@
 package az.movie.az_movie.ui.fragment.main
 
 
+import android.util.Log.d
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -59,6 +60,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
         }
         filmTabAdapter.clickIntCallBack = {
             openMovie(it)
+        }
+        filmTabAdapter.clickBooleanCallBack = {
+            openFullData(it)
         }
     }
 
@@ -198,6 +202,14 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
         findNavController().navigate(
             MainFragmentDirections.actionNavigationMainToSearchMovieFragment(
 
+            )
+        )
+    }
+
+    private fun openFullData(movies:Boolean) {
+        findNavController().navigate(
+            MainFragmentDirections.actionNavigationMainToMoviesFullFragment(
+            movies
             )
         )
     }

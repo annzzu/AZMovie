@@ -37,4 +37,7 @@
     <string name="play">Play</string>
     <string name="movie">Movie</string>
     <string name="subtitle">Subtitle</string>
+
+
+    <string name="period">Period</string>
 </resources>

@@ -101,7 +101,7 @@ class MainActivity : BaseActivity() , NavController.OnDestinationChangedListener
         arguments: Bundle?
     ) {
         requestedOrientation = when (destination.id) {
-            IDS.navigationSearchMovie, IDS.navigationMovie -> {
+            IDS.navigationSearchMovie, IDS.navigationMovie , IDS.navigationMoviesFullFragment -> {
                 goBack()
                 ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
             }

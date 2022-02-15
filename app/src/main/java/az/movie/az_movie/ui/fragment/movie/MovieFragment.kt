@@ -1,5 +1,7 @@
 package az.movie.az_movie.ui.fragment.movie
 
+import android.content.Intent
+import android.net.Uri
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -87,6 +89,10 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::i
         ivPoster.setImageUrl(movie.poster)
         tvTitle.text = movie.title
         ivPoster.clipToOutline = true
+        btnImdb.setOnClickListener{
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse( movie.imdbUrl))
+            this@MovieFragment.context?.startActivity(intent)
+        }
 
         movie.genres?.data?.let {
             genreAdapter.submitList(movie.genres.data)

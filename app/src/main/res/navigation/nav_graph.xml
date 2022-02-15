@@ -16,12 +16,14 @@
         <action
             android:id="@+id/action_navigationMain_to_navigationMovie"
             app:destination="@id/navigationMovie"
-            app:popUpTo="@id/navigationMain"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/navigationMain"/>
         <action
             android:id="@+id/action_navigationMain_to_searchMovieFragment"
             app:destination="@id/navigationSearchMovie" />
-
+        <action
+            android:id="@+id/action_navigationMain_to_moviesFullFragment"
+            app:destination="@id/navigationMoviesFullFragment"
+            app:popUpTo="@id/navigationMain"/>
     </fragment>
 
     <fragment
@@ -92,7 +94,7 @@
             app:argType="string" />
         <argument
             android:name="seasons"
-            app:argType="az.movie.az_movie.domain.model.moviesDataModel.Seasons" />
+            app:argType="az.movie.az_movie.model.moviesDataModel.Seasons" />
         <action
             android:id="@+id/action_seriesBottomSheet_to_playerFragment"
             app:destination="@id/navigationPlayer" />
@@ -119,6 +121,20 @@
         <action
             android:id="@+id/action_searchMovieFragment_to_navigationMovie"
             app:destination="@id/navigationMovie" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigationMoviesFullFragment"
+        android:name="az.movie.az_movie.ui.fragment.movies_full.MoviesFullFragment"
+        android:label="fragment_movies_full"
+        tools:layout="@layout/fragment_movies_full" >
+        <action
+            android:id="@+id/action_navigationMain_to_navigationMovie"
+            app:destination="@id/navigationMovie"
+            app:popUpTo="@id/navigationMain"/>
+        <argument
+            android:name="movie"
+            app:argType="boolean"
+            android:defaultValue="true" />
     </fragment>
 
 </navigation>

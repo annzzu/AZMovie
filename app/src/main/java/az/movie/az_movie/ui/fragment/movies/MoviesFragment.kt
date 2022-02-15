@@ -7,6 +7,7 @@ import az.movie.az_movie.databinding.FragmentMoviesBinding
 import az.movie.az_movie.extensions.*
 import az.movie.az_movie.ui.base.BaseFragment
 import az.movie.az_movie.domain.response_handler.Resource
+import az.movie.az_movie.util.typealiases.ClickBooleanCallBack
 import az.movie.az_movie.util.typealiases.ClickIntCallBack
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -20,14 +21,18 @@ class MoviesFragment : BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding
     private val moviesViewModel: MoviesViewModel by viewModels()
     private lateinit var moviesTopAdapter: MoviesTopAdapter
     var clickIntCallBack: ClickIntCallBack? = null
+    var clickBooleanCallBack: ClickBooleanCallBack? = null
 
     override fun setInfo() {
         initRV()
     }
 
-    override fun listener() {
-        binding.btnRetry.setOnClickListener {
+    override fun listener() = with(binding) {
+        btnRetry.setOnClickListener {
             observeMovieData()
+        }
+        btnTop.setOnClickListener {
+            openFullData()
         }
     }
 
@@ -86,6 +91,10 @@ class MoviesFragment : BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding
         moviesTopAdapter.clickIntCallBack = {
             clickIntCallBack?.invoke(it)
         }
+    }
+
+    private fun openFullData() {
+        clickBooleanCallBack?.invoke(series)
     }
 
     override fun stop() {}
