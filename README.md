@@ -52,7 +52,7 @@ Top Movies with period| Top Movies with period
 
 ## Project characteristics and tech-stack
 * Tech-stack
-    * [100% Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - perform background operations
+    * [100% Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) + [Flow](https://developer.android.com/reference/androidx/constraintlayout/helper/widget/Flow) - perform background operations
     * [Dagger2](https://github.com/google/dagger) - Dependency Injection lib with large community support.
     * [Retrofit](https://square.github.io/retrofit/) - Network Http Client
     * [Jetpack](https://developer.android.com/jetpack)
@@ -65,6 +65,10 @@ Top Movies with period| Top Movies with period
     * [okhttp-logging-interceptor](https://github.com/square/okhttp/blob/master/okhttp-logging-interceptor/README.md) - logs HTTP request and response data.
     * [Moshi](https://github.com/square/moshi) - Data, Model & Entity JSON Parser that understands Kotlin non-nullable and default parameters
     * [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-migration) -  Load and display paged data
+    * [Splash Screen](https://developer.android.com/guide/topics/ui/splash-screen) - Splash screen with theme and animations
+    * [SharedPreferences](https://developer.android.com/reference/android/content/SharedPreferences) - For first time intro pages
+    * [ViewPager2](https://developer.android.com/jetpack/androidx/releases/viewpager2) - Swipe views allow you to navigate between tabs (Movies, Series), intro pages and for trailers 
+    * extensions - to add methods to class without inheriting a class or using any type of design pattern. 
 * Modern Architecture
     * Clean Architecture (at feature module level)
     * Single activity architecture using [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)
