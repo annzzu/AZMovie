@@ -59,7 +59,6 @@ Top Movies with period| Top Movies with period
         * [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) - in-app navigation
         * [Flow](https://developer.android.com/kotlin/flow) 
         * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - store and manage UI-related data in a lifecycle conscious way
-    * [Kodein](https://docs.kodein.org/) - dependency injection
     * [Glide](https://github.com/bumptech/glide) - image loading library
     * [Lottie](http://airbnb.io/lottie) - animation library
     * [okhttp-logging-interceptor](https://github.com/square/okhttp/blob/master/okhttp-logging-interceptor/README.md) - logs HTTP request and response data.
@@ -114,7 +113,9 @@ This is project is a movie app, to watching your favorite series and movies with
 
 
 
-
-
 ### Android projects by me
 - [Covid Restrictions](https://github.com/annzzu/AZ) - AZ - For finding worldwide covid restriction and planing Travel.
+
+
+## Questions
+If you have any questions about this projects, please contact me directly at ![GMAIL](https://img.shields.io/badge/Gmail-anaz.zurabashvili@gmail.com-blue.svg?style=flat)
