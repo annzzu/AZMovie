@@ -21,7 +21,7 @@ I have no right over the api itself and I do not guarantee that the material tha
 2. View Individual movies and get the movie data such as cast, movie duration, summary and description.
 3. Search for Movies and Series.
 4. Watch Movies And Series with subtitles.
-5. See top weekly movies and series.
+5. See top perid(Day, Week, Month) weekly movies and series.
 
 
 #### Introduction to the user
@@ -30,15 +30,18 @@ I have no right over the api itself and I do not guarantee that the material tha
 * Movie Page with its details and buttom sheet for start stream the language you choose
 * Series buttom sheet to choose season and then serie 
 * Search page for searching series and movies
-* Top weekly Movies and Series page
+* Top Perid(Day, Week, Month) Movies and Series page
 
 
 ### Screenshots
 ###
 Home Page | Movie Page | Movies Choose | Series Choose | Search Movies and Series
 ---|---|---|---|---
-<img src="screenshots/home_page.jpg"  width="200" alt="018"/> | <img src="screenshots/movie_bottom_sheet_shot.jpg"  width="200" alt="018" />  | <img src="screenshots/movie_bottom_sheet_shot.jpg"  width="200" alt="018" />| <img src="screenshots/rick&morty3.jpg" width="200" alt="018"  /> |  <img src="screenshots/search_shrek.jpg" width="200" alt="018">
-   
+<img src="screenshots/home_page.jpg"  width="200" alt="018"/> | <img src="screenshots/movie_page.jpg"  width="200" alt="018" />  | <img src="screenshots/movie_bottom_sheet_shot.jpg"  width="200" alt="018" />| <img src="screenshots/rick&morty3.jpg" width="200" alt="018"  /> |  <img src="screenshots/search_shrek.jpg" width="200" alt="018">
+
+Top Movies with period| Top Movies with period
+---|---|
+<img src="screenshots/movie_period_search.jpg"  width="200" alt="018"/> | <img src="screenshots/search_movie_period.gif"  width="200" alt="018" />  
    
 ## Movie Subtitles -> 
 
@@ -61,6 +64,7 @@ Home Page | Movie Page | Movies Choose | Series Choose | Search Movies and Serie
     * [Lottie](http://airbnb.io/lottie) - animation library
     * [okhttp-logging-interceptor](https://github.com/square/okhttp/blob/master/okhttp-logging-interceptor/README.md) - logs HTTP request and response data.
     * [Moshi](https://github.com/square/moshi) - Data, Model & Entity JSON Parser that understands Kotlin non-nullable and default parameters
+    * [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-migration) -  Load and display paged data
 * Modern Architecture
     * Clean Architecture (at feature module level)
     * Single activity architecture using [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)
@@ -68,8 +72,6 @@ Home Page | Movie Page | Movies Choose | Series Choose | Search Movies and Serie
     * [Dynamic feature modules](https://developer.android.com/studio/projects/dynamic-delivery)
     * [Android Architecture components](https://developer.android.com/topic/libraries/architecture) ([ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel), 
     * [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation))
-    * [Exoplayer](https://developer.android.com/guide/topics/media/exoplayer) - for streaming films
-
 * UI
     * [Material design](https://material.io/design)
     * [Exoplayer](https://developer.android.com/guide/topics/media/exoplayer) - for streaming films
@@ -104,7 +106,7 @@ SERVER_URL=https://api.adjaranet.com/api/v1/
 
 ## Inspiration
 
-This is project is a movie app, to watching your favorite series and movies with subtitles without any adds, for full comfort.
+This is project is a movie app, to watching your favorite series and movies with subtitles without any ads, for full comfort.
 
 
 
