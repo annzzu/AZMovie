@@ -99,7 +99,7 @@ There are a few ways to open this project.
 2. Open `Android Studio` and select `File | Open...` from the menu. Select cloned directory and press `Open` button
 
 
-`API`
+`API in gradle.properties`
 ```gradle.properties
 SERVER_URL=https://api.adjaranet.com/api/v1/
 ```
