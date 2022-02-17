@@ -109,13 +109,13 @@ SERVER_URL=https://api.adjaranet.com/api/v1/
 
 ## Inspiration
 
-This is project is a movie app, to watching your favorite series and movies with subtitles without any ads, for full comfort.
+This project is a movie app, to watching your favorite series and movies with subtitles without any ads, for full comfort.
 
 
 
 ### Android projects by me
 - [Covid Restrictions](https://github.com/annzzu/AZ) - AZ - For finding worldwide covid restriction and planing Travel.
-
+- [AZ Light](https://github.com/annzzu/AZLight) - AZLight - AZLight is a small android app for connecting esp8266 to turn on and off lights.
 
 ## Questions
 If you have any questions about this projects, please contact me directly at ![GMAIL](https://img.shields.io/badge/Gmail-anaz.zurabashvili@gmail.com-blue.svg?style=flat)
